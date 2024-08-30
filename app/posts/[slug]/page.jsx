@@ -24,13 +24,16 @@ export default async function Page({ params }) {
     <>
       <Link href="/guides">
         <Button
-          className="mt-20 mx-20 bg-slate-200 px-6 py-2
+          className="mt-20 mx-20 bg-accent px-6 py-2
             font-semibold rounded-lg text-slate-950"
         >
           <IoHome />
         </Button>
       </Link>
-      <div className="my-20 px-2 mx-auto prose prose-headings:text-slate-400 prose-p:text-slate-300">
+      <div
+        className="my-20 px-2 mx-auto prose prose-headings:text-slate-400 prose-p:text-slate-300 prose-ul:text-slate-300 prose-ol:text-slate-300
+      prose-li:text-slate-300"
+      >
         <MDXRemote source={content} />
       </div>
     </>

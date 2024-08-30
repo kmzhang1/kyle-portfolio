@@ -1,0 +1,68 @@
+---
+title: Amazon Ecommerce System Design
+excerpt: Amazon-like ecommerce with database, APIs, and system design specifications.
+date: 2024-08-28
+author: "Kyle Zhang"
+image: "/assets/posts/article1.jpeg"
+---
+
+# Amazon Ecommerce System Design
+
+![Sample Image](/assets/posts/article1.jpeg "Sample Image")
+
+## 1. Functional Requirements
+
+- Search for products.
+  - Tell users whether the product can be delivered to their location when searching for products.
+- Maintain cart and wishlist.
+- Checkout.
+  - Make payment and complete order.
+- View past and current order information.
+
+## 2. Non-Functional Requirements
+
+- Low latency for a good user experience.
+  - User facing components must have low latency.
+- High availability and high consistency.
+  - Search needs to be highly available at the cost of consistency
+  - Inventory and payment needs consistency at the cost of availability.
+
+## 3. Database Design
+
+    - User DB (SQL)
+        - UserID (PK)
+        - UserName (string)
+        - Password (string) encrypted
+        - First Name (string)
+        - Last Name (string)
+        - Email (string)
+        - Last Login (DTTM)
+        - Created (DTTM)
+    - Address DB (SQL)
+        - Address ID (PK)
+        - UserID (FK)
+        - Effective Data (DTTM)
+        - Address Type (string) billing/home/office
+        - AddressLine 1 (string)
+        - AddressLine 2 (string)
+        - City (string)
+        - Country (string)
+        - Zip (alpha numeric)
+    - Product DB (NoSQL - Document DB - DynamoDB or MongoDB)
+        - items stored as json documents
+    - Order DB (NoSQL, Document DB)
+        - store all items in and order as an array of items within the same json document
+    - Review DB (NoSQL, Key-Value DB)
+        - key will be product id
+        - rating
+        - description
+        - images/videos
+        - userid
+
+## 4. APIs
+
+    - GetRecommendatoins(UserID) - return list of 10 product recommendations
+    - Search(Search String, UserID) - GET method & returns a list of products
+    - AddToCart(UserID, ProductID, Qty, Amt) - Returns a boolean (true/false) status
+    - PlaceOrder(UserID, OrderID, AddressID, PaymentStatues) - returns boolean
+    - CheckOrderStatus(OrderID) - GET - Returns order status

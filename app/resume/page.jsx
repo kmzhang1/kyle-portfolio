@@ -17,8 +17,8 @@ import { COriginal } from "devicons-react";
 // about data
 
 const about = {
-  title: "about me",
-  description: "live for yourself, not others.",
+  title: "About Me",
+  description: "Live for yourself, not others.",
   info: [
     {
       fieldName: "Name",
@@ -50,8 +50,8 @@ const about = {
 // experience data
 const experience = {
   icon: "/assets/resume/badge.svg",
-  title: "my experience",
-  description: "work hard, play hard.",
+  title: "My Experience",
+  description: "Work hard to play hard.",
   items: [
     {
       company: "Thales Group",
@@ -69,8 +69,8 @@ const experience = {
 // education data
 const education = {
   icon: "/assets/resume/cap.svg",
-  title: "my education",
-  description: "where learning begins.",
+  title: "My Education",
+  description: "Where learning begins.",
   items: [
     {
       institution: "Santa Clara University",
@@ -89,8 +89,8 @@ const education = {
 
 // skills
 const skills = {
-  title: "my skills",
-  description: "learn something new everyday.",
+  title: "My Skills",
+  description: "Keep improving everyday.",
   skillList: [
     {
       icon: <FaPython />,
@@ -158,10 +158,10 @@ const Resume = () => {
             className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0
           gap-6"
           >
-            <TabsTrigger value="experience">experience</TabsTrigger>
-            <TabsTrigger value="education">education</TabsTrigger>
-            <TabsTrigger value="skills">skills</TabsTrigger>
-            <TabsTrigger value="about">about me</TabsTrigger>
+            <TabsTrigger value="experience">Experience</TabsTrigger>
+            <TabsTrigger value="education">Education</TabsTrigger>
+            <TabsTrigger value="skills">Skills</TabsTrigger>
+            <TabsTrigger value="about">About Me</TabsTrigger>
           </TabsList>
 
           {/* content */}

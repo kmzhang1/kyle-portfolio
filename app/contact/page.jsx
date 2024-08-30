@@ -30,7 +30,7 @@ const info = [
   {
     icon: <FaMapMarkerAlt />,
     title: "Address",
-    description: "4056 Chieri Ct. San Jose, CA 95148",
+    description: "San Jose, CA 95148",
   },
 ];
 

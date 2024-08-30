@@ -13,12 +13,12 @@ const Home = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span>software developer</span>
-            <h1 className="h1">
-              hello i'm <br /> <span className="text-accent">kyle zhang</span>
-            </h1>
+            <span>hello i'm software developer</span>
+            <h2 className="h2">
+              <span className="text-accent">Kyle Ming Zhang</span>
+            </h2>
             <p className="max-w-[500px] mb-9 text-white/80">
-              i am a learner and a creator.
+              i love learning to create.
             </p>
             {/* socials*/}
             <div className="flex flex-col xl:flex-row items-center gap-8">
@@ -47,7 +47,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Stats />
+      {/* <Stats /> */}
     </section>
   );
 };
