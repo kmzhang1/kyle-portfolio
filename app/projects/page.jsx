@@ -25,16 +25,52 @@ SwiperCore.use([Keyboard]);
 const projects = [
   {
     num: "01",
-    category: "fullstack",
-    title: "project 1",
-    description: "this is project 1",
+    category: "Deep Learning",
+    title: "EEG2Tempi",
+    description: "Predicting Music Tempi from EEG",
+    stack: [{ name: "Python" }, { name: "Pytorch" }, { name: "MNE" }],
+    image: "/assets/work/eeg2tempi.png",
+    live: "",
+    github: "",
+  },
+  {
+    num: "02",
+    category: "Deep Learning",
+    title: "MINDSIGHT",
+    description:
+      "Making Intelligible Decompiled Source by Imposing Homomorphic Transforms",
+    stack: [
+      { name: "Python" },
+      { name: "Pytorch" },
+      { name: "Ghidra" },
+      { name: "scikit" },
+    ],
+    image: "/assets/work/mindsight.png",
+    live: "",
+    github: "",
+  },
+  {
+    num: "03",
+    category: "Web Design",
+    title: "Portfolio",
+    description: "Showcasing My Work and Skills",
     stack: [{ name: "Next.js" }, { name: "Tailwind" }, { name: "Javascript" }],
     image: "/assets/work/thumb1.png",
     live: "",
     github: "",
   },
   {
-    num: "02",
+    num: "04",
+    category: "Data Visualization",
+    title: "Toxic Awareness",
+    description: "A Visualization of California Toxic Levels",
+    stack: [{ name: "Next.js" }, { name: "Tailwind" }, { name: "Javascript" }],
+    image: "/assets/work/toxicsustain.png",
+    live: "",
+    github: "",
+  },
+  {
+    num: "06",
     category: "fullstack",
     title: "project 2",
     description: "this is project 2",
@@ -72,14 +108,15 @@ const Work = () => {
             <div className="flex flex-col gap-[30px] h-[50]">
               {/* outline num */}
               <div
-                className="text-8xl leading-none font-extrabold text-transparent
+                className="leading-none font-extrabold text-transparent
               text-outline"
               >
-                {project.num}
+                <span className="text-7xl">{project.num}</span>
+                <span className="text-5xl"> {project.title}</span>
               </div>
               {/* project category */}
               <h2
-                className="text-[42px] font-bold leading-none text-white
+                className="text-[30px] font-bold leading-none text-white
               group-hover:text-accent transition-all duration-500 capitalize"
               >
                 {project.category} project

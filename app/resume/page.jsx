@@ -5,14 +5,36 @@ import {
   FaCss3,
   FaJs,
   FaReact,
-  FaFigma,
   FaNodeJs,
   FaPython,
+  FaJava,
+  FaLinux,
+  FaGithub,
 } from "react-icons/fa";
 
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiCplusplus,
+  SiTensorflow,
+  SiPytorch,
+  SiScikitlearn,
+  SiStreamlit,
+  SiFlask,
+  SiFastapi,
+  SiAmazons3,
+  SiNvidia,
+  SiAnaconda,
+  SiJupyter,
+  SiDocker,
+  SiKubernetes,
+  SiPostgresql,
+  SiMysql,
+  SiApachecassandra,
+  SiApachekafka,
+} from "react-icons/si";
 
-import { COriginal } from "devicons-react";
+import { DiMongodb, DiRedis } from "react-icons/di";
 
 // about data
 
@@ -94,35 +116,75 @@ const skills = {
   skillList: [
     {
       icon: <FaPython />,
-      name: "python",
+      name: "Python",
     },
     {
       icon: <FaCss3 />,
-      name: "css",
+      name: "CSS",
     },
     {
       icon: <FaJs />,
-      name: "javascript",
+      name: "Javascript",
     },
     {
       icon: <FaHtml5 />,
-      name: "html 5",
+      name: "HTML 5",
     },
     {
       icon: <FaReact />,
-      name: "react.js",
+      name: "React.js",
     },
     {
       icon: <SiNextdotjs />,
-      name: "next.js",
+      name: "Next.js",
     },
     {
       icon: <SiTailwindcss />,
-      name: "tailwind.css",
+      name: "Tailwind.css",
     },
     {
       icon: <FaNodeJs />,
-      name: "node.js",
+      name: "Node.js",
+    },
+    {
+      icon: <SiCplusplus />,
+      name: "C++",
+    },
+    {
+      icon: <FaPython />,
+      name: "Python",
+    },
+    {
+      icon: <FaCss3 />,
+      name: "CSS",
+    },
+    {
+      icon: <FaJs />,
+      name: "Javascript",
+    },
+    {
+      icon: <FaHtml5 />,
+      name: "HTML 5",
+    },
+    {
+      icon: <FaReact />,
+      name: "React.js",
+    },
+    {
+      icon: <SiNextdotjs />,
+      name: "Next.js",
+    },
+    {
+      icon: <SiTailwindcss />,
+      name: "Tailwind.css",
+    },
+    {
+      icon: <FaNodeJs />,
+      name: "Node.js",
+    },
+    {
+      icon: <COriginal />,
+      name: "C",
     },
   ],
 };
