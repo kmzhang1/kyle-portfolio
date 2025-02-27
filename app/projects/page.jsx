@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 import { Swiper, SwiperSlide, SwiperSlider } from "swiper/react";
-import SwiperCore, { Keyboard } from "swiper/core";
+import SwiperCore from "swiper/core";
 import "swiper/css";
 
 import { BsArrowUpRight, BsGit, BsGithub } from "react-icons/bs";
@@ -19,8 +19,6 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
-
-SwiperCore.use([Keyboard]);
 
 const projects = [
   {

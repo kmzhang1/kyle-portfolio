@@ -182,10 +182,6 @@ const skills = {
       icon: <FaNodeJs />,
       name: "Node.js",
     },
-    {
-      icon: <COriginal />,
-      name: "C",
-    },
   ],
 };
 
