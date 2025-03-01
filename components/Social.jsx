@@ -13,7 +13,7 @@ const socials = [
 
 const Social = () => {
   return (
-    <div className="container mx-auto flex justify-between items-center mb-1">
+    <div className="container mx-auto flex justify-between items-center mb-2">
       <a
         href="/kyle_zhang_resume.pdf"
         target="_blank"

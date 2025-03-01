@@ -50,7 +50,7 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:h-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form className="flex flex-col gap-4 p-10 bg-[#27272c] rounded-xl">
               <h3 className="text-4xl text-accent">Let's work together!</h3>
               <p className="text-white/60">
                 I value collaboration that is positive, productive and
@@ -64,6 +64,7 @@ const Contact = () => {
                 <Input type="phone" placeholder="Phone Number" />
               </div>
               {/* select */}
+              {/*
               <Select>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
@@ -76,10 +77,11 @@ const Contact = () => {
                     <SelectItem value="mst">Logo Design</SelectItem>
                   </SelectGroup>
                 </SelectContent>
-              </Select>
+              </Select> 
+              */}
               {/* text area */}
               <Textarea
-                className="h=[200px]"
+                className="h-[200px]"
                 placeholder="Type your message here."
               />
               {/* send button */}
