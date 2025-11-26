@@ -393,21 +393,21 @@ const Resume = () => {
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+        transition: { delay: 0.2, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-screen flex items-center justify-center xl:justify-start py-12 xl:py-0"
+      className="min-h-screen flex items-start justify-center xl:justify-start py-12 xl:py-24"
     >
-      <div className="w-full px-8 xl:pl-24 xl:pr-16 h-full">
+      <div className="w-full max-w-6xl mx-auto px-6 xl:px-12 h-full">
         <Tabs
           defaultValue="experience"
-          className="flex flex-col xl:flex-row gap-[60px] xl:items-center"
+          className="flex flex-col xl:flex-row gap-12 xl:items-start"
         >
-          <div className="xl:flex xl:items-center xl:min-h-[600px]">
-            <TabsList className="flex flex-col w-full max-w-[250px] gap-6 mx-auto xl:mx-0">
-              <TabsTrigger value="experience" className="w-[250px]">Experience</TabsTrigger>
-              <TabsTrigger value="education" className="w-[250px]">Education</TabsTrigger>
-              <TabsTrigger value="skills" className="w-[250px]">Skills</TabsTrigger>
-              <TabsTrigger value="about" className="w-[250px]">About Me</TabsTrigger>
+          <div className="xl:sticky xl:top-24 xl:min-w-[200px]">
+            <TabsList className="flex flex-col w-full gap-2 mx-auto xl:mx-0 bg-transparent">
+              <TabsTrigger value="experience" className="w-full justify-start text-sm font-light">Experience</TabsTrigger>
+              <TabsTrigger value="education" className="w-full justify-start text-sm font-light">Education</TabsTrigger>
+              <TabsTrigger value="skills" className="w-full justify-start text-sm font-light">Skills</TabsTrigger>
+              <TabsTrigger value="about" className="w-full justify-start text-sm font-light">About</TabsTrigger>
             </TabsList>
           </div>
 
@@ -415,43 +415,44 @@ const Resume = () => {
           <div className="w-full flex-1">
             {/* experience */}
             <TabsContent value="experience" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {experience.description}
-                </p>
-                <ScrollArea className="h-[600px] pr-6">
-                  <ul className="grid grid-cols-1 gap-[20px] pb-4 pr-4">
+              <div className="flex flex-col gap-8 text-left">
+                <div>
+                  <h3 className="text-2xl font-light mb-2">{experience.title}</h3>
+                  <p className="text-sm opacity-60">
+                    {experience.description}
+                  </p>
+                </div>
+                <ScrollArea className="h-[600px]">
+                  <ul className="space-y-8 pb-4">
                     {experience.items.map((item, index) => {
                       return (
                         <li
                           key={index}
-                          className="bg-[#232329] py-6 px-10 rounded-xl
-                        flex flex-col justify-start items-center lg:items-start
-                        gap-3"
+                          className="border-l-2 pl-6 py-2 transition-colors"
+                          style={{ borderColor: 'var(--color-border)' }}
                         >
-                          <div className="flex items-center justify-between w-full">
-                            <div className="flex items-center gap-3">
-                              <h3 className="text-xl text-center lg:text-left">
-                                {item.position}
-                              </h3>
-                              {/* dot */}
-                              <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                              <p className="text-white/60">{item.company}</p>
+                          <div className="flex flex-col gap-3">
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                              <div>
+                                <h3 className="text-lg font-normal">
+                                  {item.position}
+                                </h3>
+                                <p className="text-sm opacity-60">{item.company}</p>
+                              </div>
+                              <span className="text-xs opacity-50 whitespace-nowrap">
+                                {item.duration}
+                              </span>
                             </div>
-                            <span className="text-md text-accent whitespace-nowrap">
-                              {item.duration}
-                            </span>
-                          </div>
-                          <div className="flex flex-col gap-2 text-white/60 text-sm w-full">
-                            <div>{item.description1}</div>
-                            <div>{item.description2}</div>
-                            {item.description3 && (
-                              <div>{item.description3}</div>
-                            )}
-                            {item.description4 && (
-                              <div>{item.description4}</div>
-                            )}
+                            <div className="flex flex-col gap-2 opacity-70 text-sm leading-relaxed">
+                              <div>{item.description1}</div>
+                              <div>{item.description2}</div>
+                              {item.description3 && (
+                                <div>{item.description3}</div>
+                              )}
+                              {item.description4 && (
+                                <div>{item.description4}</div>
+                              )}
+                            </div>
                           </div>
                         </li>
                       );
@@ -462,35 +463,31 @@ const Resume = () => {
             </TabsContent>
             {/* education */}
             <TabsContent value="education" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {education.description}
-                </p>
-                <ScrollArea className="h-[600px] pr-6">
-                  <ul className="grid grid-cols-1 gap-[30px] pb-4 pr-4">
+              <div className="flex flex-col gap-8 text-left">
+                <div>
+                  <h3 className="text-2xl font-light mb-2">{education.title}</h3>
+                  <p className="text-sm opacity-60">
+                    {education.description}
+                  </p>
+                </div>
+                <ScrollArea className="h-[600px]">
+                  <ul className="space-y-8 pb-4">
                     {education.items.map((item, index) => {
                       return (
                         <li
                           key={index}
-                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl
-                        flex flex-col justify-center items-center lg:items-start
-                        gap-1"
+                          className="border-l-2 pl-6 py-2 transition-colors"
+                          style={{ borderColor: 'var(--color-border)' }}
                         >
-                          <div className="flex flex-col gap-3">
-                            <h3
-                              className="text-xl text-center
-                            lg:text-left"
-                            >
+                          <div className="flex flex-col gap-2">
+                            <h3 className="text-lg font-normal">
                               {item.institution}
                             </h3>
-                            {/* dot */}
-                            {/*<span className="w-[6px] h-[6px] rounded-full bg-accent"></span>*/}
-                            <p className="text-white/60 text-lg">
+                            <p className="text-sm opacity-70">
                               {item.position}
                             </p>
-                            <p className="text-white/60 text-sm">{item.gpa}</p>
-                            <span className="text-accent">{item.duration}</span>
+                            <p className="text-sm opacity-60">{item.gpa}</p>
+                            <span className="text-xs opacity-50">{item.duration}</span>
                           </div>
                         </li>
                       );
@@ -501,65 +498,32 @@ const Resume = () => {
             </TabsContent>
             {/* skills */}
             <TabsContent value="skills" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{skills.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {skills.description}
-                </p>
-                {/* Legend */}
-                <div className="flex flex-wrap gap-4 justify-center xl:justify-start">
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 bg-purple-900/30 border border-purple-500/20 rounded"></div>
-                    <span className="text-xs text-white/60">AI/ML</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 bg-blue-900/30 border border-blue-500/20 rounded"></div>
-                    <span className="text-xs text-white/60">Frontend</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 bg-green-900/30 border border-green-500/20 rounded"></div>
-                    <span className="text-xs text-white/60">Backend</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 bg-orange-900/30 border border-orange-500/20 rounded"></div>
-                    <span className="text-xs text-white/60">DevOps/Cloud</span>
-                  </div>
+              <div className="flex flex-col gap-8 text-left">
+                <div>
+                  <h3 className="text-2xl font-light mb-2">{skills.title}</h3>
+                  <p className="text-sm opacity-60">
+                    {skills.description}
+                  </p>
                 </div>
-                <ScrollArea className="h-[600px] pr-6">
-                  <div className="pb-4 pr-4">
+                <ScrollArea className="h-[600px]">
+                  <div className="pb-4 space-y-8">
                     {Object.entries(groupedSkills).map(([category, skills]) => (
-                      <div key={category} className="mb-6">
-                        <h2 className="text-xl font-bold mb-3">{category}</h2>
-                        <ul className="grid grid-cols-16 sm:grid-cols-10 md:grid-cols-16 gap-0">
+                      <div key={category}>
+                        <h2 className="text-base font-normal mb-4 opacity-80">{category}</h2>
+                        <ul className="flex flex-wrap gap-3">
                           {skills.map((skill, index) => {
-                            const getColorClass = (type) => {
-                              switch(type) {
-                                case 'ai':
-                                  return 'bg-purple-900/30 border border-purple-500/20';
-                                case 'frontend':
-                                  return 'bg-blue-900/30 border border-blue-500/20';
-                                case 'backend':
-                                  return 'bg-green-900/30 border border-green-500/20';
-                                case 'devops':
-                                  return 'bg-orange-900/30 border border-orange-500/20';
-                                default:
-                                  return 'bg-[#232329]';
-                              }
-                            };
-
                             return (
                               <li
                                 key={index}
-                                className="flex flex-col items-center"
+                                className="flex items-center gap-2 px-3 py-2 rounded-md border transition-colors text-sm opacity-80 hover:opacity-100"
+                                style={{ borderColor: 'var(--color-border)' }}
                               >
-                                <div className={`w-[45px] h-[45px] ${getColorClass(skill.type)} rounded-xl flex justify-center items-center group`}>
-                                  <div className="text-2xl group-hover:text-accent transition-all duration-300">
-                                    {skill.icon}
-                                  </div>
+                                <div className="text-base opacity-70">
+                                  {skill.icon}
                                 </div>
-                                <p className="text-center text-xs mt-1 h-8 flex items-start justify-center w-[50px]">
+                                <span className="text-xs">
                                   {skill.name}
-                                </p>
+                                </span>
                               </li>
                             );
                           })}
@@ -573,24 +537,27 @@ const Resume = () => {
             {/* about */}
             <TabsContent
               value="about"
-              className="w-full text-center xl:text-left"
+              className="w-full text-left"
             >
-              <div className="flex flex-col gap-[30px] min-h-[600px]">
-                <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {about.description}
-                </p>
-                <ul className="grid grid-cols-1 gap-y-6 max-w-[600px] mx-auto xl:mx-0">
+              <div className="flex flex-col gap-8 min-h-[600px]">
+                <div>
+                  <h3 className="text-2xl font-light mb-2">{about.title}</h3>
+                  <p className="text-sm opacity-60">
+                    {about.description}
+                  </p>
+                </div>
+                <ul className="space-y-4 max-w-[600px]">
                   {about.info.map((item, index) => {
                     return (
                       <li
                         key={index}
-                        className="flex items-center justify-start"
+                        className="flex items-start gap-4 pb-4 border-b transition-colors"
+                        style={{ borderColor: 'var(--color-border)' }}
                       >
-                        <span className="text-white/60 min-w-[120px] text-left">
+                        <span className="text-xs opacity-50 min-w-[100px] pt-1">
                           {item.fieldName}
                         </span>
-                        <span className="text-xl text-right">
+                        <span className="text-sm">
                           {item.fieldValue}
                         </span>
                       </li>

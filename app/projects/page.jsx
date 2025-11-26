@@ -109,41 +109,52 @@ const Work = () => {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           {/* project text description */}
-          <div
+          <motion.div
+            key={project.num}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
             className="w-full xl:w-[50%] xl:h-[460px] flex flex-col
           xl:justify-between order-2 xl:order-none"
           >
             <div className="flex flex-col gap-[30px] h-50">
               {/* outline num */}
-              <div
-                className="leading-none font-extrabold text-transparent
-              text-outline"
-              >
-                <span className="text-7xl">{project.num}</span>
-                <span className="text-5xl"> {project.title}</span>
+              <div className="leading-none font-extrabold">
+                <div className="flex items-baseline gap-4">
+                  <span className="text-7xl text-transparent text-outline">
+                    {project.num}
+                  </span>
+                  <span className="text-5xl bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent">
+                    {project.title}
+                  </span>
+                </div>
               </div>
               {/* project category */}
-              <h2
-                className="text-[30px] font-bold leading-none text-white
-              group-hover:text-accent transition-all duration-500 capitalize"
-              >
-                {project.category} project
-              </h2>
+              <div className="inline-flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+                <h2 className="text-[30px] font-bold leading-none capitalize bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                  {project.category} project
+                </h2>
+              </div>
               {/* project description */}
-              <p className="text-white/60">{project.description}</p>
+              <p className="text-black/70 dark:text-white/70 text-lg leading-relaxed">{project.description}</p>
               {/* stack */}
-              <ul className="flex gap-4">
+              <ul className="flex flex-wrap gap-3">
                 {project.stack.map((item, index) => {
                   return (
-                    <li key={index} className="text-xl text-accent">
+                    <li
+                      key={index}
+                      className="px-4 py-2 rounded-full bg-accent/10 border border-accent/20
+                      text-accent hover:bg-accent/20 hover:border-accent/40
+                      transition-all duration-300 text-sm font-medium backdrop-blur-sm"
+                    >
                       {item.name}
-                      {index !== project.stack.length - 1 && ","}
                     </li>
                   );
                 })}
               </ul>
               {/* border */}
-              <div className="border border-white/20"></div>
+              <div className="border-t border-gradient-to-r from-transparent via-white/20 to-transparent"></div>
               {/* buttons */}
               <div className="flex items-center gap-4">
                 {/* live demo */}
@@ -152,9 +163,12 @@ const Work = () => {
                     <Tooltip>
                       <TooltipTrigger
                         className="w-[70px] h-[70px] rounded-full
-                      bg-white/5 flex justify-center items-center group"
+                      bg-white/5 hover:bg-white/10 backdrop-blur-sm
+                      flex justify-center items-center group
+                      border border-white/10 hover:border-accent/50
+                      transition-all duration-300 hover:scale-110"
                       >
-                        <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                        <BsArrowUpRight className="text-white text-3xl group-hover:text-accent transition-colors" />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Live Demo</p>
@@ -168,9 +182,12 @@ const Work = () => {
                     <Tooltip>
                       <TooltipTrigger
                         className="w-[70px] h-[70px] rounded-full
-                      bg-white/5 flex justify-center items-center group"
+                      bg-white/5 hover:bg-white/10 backdrop-blur-sm
+                      flex justify-center items-center group
+                      border border-white/10 hover:border-accent/50
+                      transition-all duration-300 hover:scale-110"
                       >
-                        <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                        <BsGithub className="text-white text-3xl group-hover:text-accent transition-colors" />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Github Repository</p>
@@ -180,7 +197,7 @@ const Work = () => {
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
           {/* swiper */}
           <div className="w-full xl:w-[50%]">
             <Swiper
@@ -194,15 +211,24 @@ const Work = () => {
               {projects.map((project, index) => {
                 return (
                   <SwiperSlide key={index} className="w-full">
-                    <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                      {/* overlay */}
-                      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+                    <div className="h-[460px] relative group flex justify-center items-center
+                      bg-gradient-to-br from-accent/5 via-transparent to-accent-hover/5
+                      rounded-xl overflow-hidden border border-white/10
+                      hover:border-accent/30 transition-all duration-500">
+                      {/* gradient overlay */}
+                      <div className="absolute top-0 bottom-0 w-full h-full
+                        bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10
+                        group-hover:from-black/40 transition-all duration-500"></div>
+                      {/* accent glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent/0 to-accent/0
+                        group-hover:from-accent/10 group-hover:to-accent-hover/10
+                        transition-all duration-500 z-10"></div>
                       {/* image */}
                       <div className="relative w-full h-full">
                         <Image
                           src={project.image}
                           fill
-                          className="object-cover"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
                           alt=""
                         />
                       </div>
@@ -214,8 +240,11 @@ const Work = () => {
               <WorkSliderBtns
                 containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)]
               xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px]
-              w-[44px] h-[44px] flex justify-center items-center transition-all"
+                btnStyles="bg-accent/90 hover:bg-accent backdrop-blur-sm text-white text-[22px]
+              w-[44px] h-[44px] flex justify-center items-center transition-all
+              rounded-lg border border-white/10 hover:border-white/30 hover:scale-110
+              shadow-lg hover:shadow-accent/50"
+                iconsStyles="transition-transform group-hover:scale-110"
               />
             </Swiper>
           </div>
