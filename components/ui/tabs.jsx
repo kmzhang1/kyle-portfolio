@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -11,26 +11,62 @@ const Tabs = TabsPrimitive.Root;
 const TabsList = React.forwardRef(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={cn("inline-flex h-auto p-0", className)}
+    className={cn("inline-flex h-auto p-0 relative", className)}
     {...props}
   />
 ));
 TabsList.displayName = TabsPrimitive.List.displayName;
 
-const TabsTrigger = React.forwardRef(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "inline-flex items-center w-full justify-start whitespace-nowrap px-3 py-2 transition-all disabled:pointer-events-none disabled:opacity-50 opacity-50 hover:opacity-70 data-[state=active]:opacity-100 data-[state=active]:border-l-2",
-      className
-    )}
-    style={{
-      color: 'var(--color-text)',
-      borderColor: 'var(--color-accent)'
-    }}
-    {...props}
-  />
-));
+const TabsTrigger = React.forwardRef(({ className, ...props }, ref) => {
+  const [isActive, setIsActive] = React.useState(false);
+  const triggerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const trigger = triggerRef.current;
+    if (!trigger) return;
+
+    const checkActive = () => {
+      setIsActive(trigger.getAttribute("data-state") === "active");
+    };
+
+    // Initial check
+    checkActive();
+
+    // Watch for attribute changes
+    const observer = new MutationObserver(checkActive);
+    observer.observe(trigger, { attributes: true, attributeFilter: ["data-state"] });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <TabsPrimitive.Trigger
+      ref={(node) => {
+        triggerRef.current = node;
+        if (typeof ref === "function") ref(node);
+        else if (ref) ref.current = node;
+      }}
+      className={cn(
+        "inline-flex items-center w-full justify-start whitespace-nowrap px-3 py-2 transition-opacity disabled:pointer-events-none disabled:opacity-50 opacity-50 hover:opacity-70 data-[state=active]:opacity-100 relative",
+        className
+      )}
+      style={{
+        color: 'var(--color-text)',
+      }}
+      {...props}
+    >
+      {isActive && (
+        <motion.div
+          layoutId="activeTab"
+          className="absolute left-0 top-0 bottom-0 w-[2px]"
+          style={{ backgroundColor: 'var(--color-accent)' }}
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        />
+      )}
+      {props.children}
+    </TabsPrimitive.Trigger>
+  );
+});
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
 const TabsContent = React.forwardRef(({ className, children, ...props }, ref) => (

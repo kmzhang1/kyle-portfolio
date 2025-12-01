@@ -41,7 +41,7 @@ const Header = () => {
             kylemzhang@gmail.com
           </a>
           <a
-            href="https://github.com/kylez56789"
+            href="https://github.com/kmzhang1"
             target="_blank"
             rel="noopener noreferrer"
             className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
@@ -58,11 +58,7 @@ const Header = () => {
           >
             <FaLinkedinIn className="text-lg" />
           </a>
-          <a
-            href="/kyle_zhang_resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="/Kyle_Resume.pdf" target="_blank" rel="noopener noreferrer">
             <Button
               variant="outline"
               size="sm"

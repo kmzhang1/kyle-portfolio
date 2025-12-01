@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedinIn, FaYoutube, FaTwitter } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 
 const socials = [
-  { icon: <FaGithub />, path: "https://github.com/kylez56789" },
+  { icon: <FaGithub />, path: "https://github.com/kmzhang1" },
   {
     icon: <FaLinkedinIn />,
     path: "https://www.linkedin.com/in/kyle-zhang-3a6551194/",
@@ -14,11 +14,7 @@ const socials = [
 const Social = () => {
   return (
     <div className="container mx-auto flex justify-between items-center mb-2">
-      <a
-        href="/kyle_zhang_resume.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="/Kyle_Resume.pdf" target="_blank" rel="noopener noreferrer">
         <Button
           variant="outline"
           size="lg"
