@@ -4,7 +4,6 @@ import "./globals.css";
 // components
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
-import StairTransition from "@/components/StairTransition";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -24,7 +23,6 @@ export default function RootLayout({ children }) {
       <body className={`${jetbrainsMono.variable} min-h-screen flex flex-col`}>
         <ThemeProvider>
           <Header />
-          <StairTransition />
           <main className="flex-1">
             <PageTransition>{children}</PageTransition>
           </main>

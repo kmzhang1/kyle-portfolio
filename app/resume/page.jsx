@@ -389,15 +389,15 @@ const Resume = () => {
   }, {});
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 0.2, duration: 0.4, ease: "easeIn" },
-      }}
-      className="min-h-screen flex items-start justify-center xl:justify-start py-12 xl:py-24"
-    >
-      <div className="w-full max-w-6xl mx-auto px-6 xl:px-12 h-full">
+    <div className="min-h-screen flex items-start justify-center xl:justify-start py-12 xl:py-24">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: { delay: 0.1, duration: 0.2, ease: "easeIn" },
+        }}
+        className="w-full max-w-6xl mx-auto px-6 xl:px-12 h-full"
+      >
         <Tabs
           defaultValue="experience"
           className="flex flex-col xl:flex-row gap-12 xl:items-start"
@@ -423,7 +423,7 @@ const Resume = () => {
                   </p>
                 </div>
                 <ScrollArea className="h-[600px]">
-                  <ul className="space-y-8 pb-4">
+                  <ul className="space-y-8 pb-4 pr-4">
                     {experience.items.map((item, index) => {
                       return (
                         <li
@@ -471,7 +471,7 @@ const Resume = () => {
                   </p>
                 </div>
                 <ScrollArea className="h-[600px]">
-                  <ul className="space-y-8 pb-4">
+                  <ul className="space-y-8 pb-4 pr-4">
                     {education.items.map((item, index) => {
                       return (
                         <li
@@ -506,7 +506,7 @@ const Resume = () => {
                   </p>
                 </div>
                 <ScrollArea className="h-[600px]">
-                  <div className="pb-4 space-y-8">
+                  <div className="pb-4 pr-4 space-y-8">
                     {Object.entries(groupedSkills).map(([category, skills]) => (
                       <div key={category}>
                         <h2 className="text-base font-normal mb-4 opacity-80">{category}</h2>
@@ -568,8 +568,8 @@ const Resume = () => {
             </TabsContent>
           </div>
         </Tabs>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

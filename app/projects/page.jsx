@@ -102,7 +102,7 @@ const Work = () => {
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+        transition: { delay: 0.1, duration: 0.2, ease: "easeIn" },
       }}
       className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
     >
@@ -113,7 +113,7 @@ const Work = () => {
             key={project.num}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.2 }}
             className="w-full xl:w-[50%] xl:h-[460px] flex flex-col
           xl:justify-between order-2 xl:order-none"
           >

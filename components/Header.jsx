@@ -11,23 +11,18 @@ import MobileNav from "./MobileNav";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 border-b transition-colors duration-300 backdrop-blur-md" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-primary)' }}>
+    <header
+      className="sticky top-0 z-50 border-b transition-colors duration-300 backdrop-blur-md"
+      style={{
+        borderColor: "var(--color-border)",
+        backgroundColor: "var(--color-primary)",
+      }}
+    >
       <div className="container mx-auto flex justify-between items-center">
         {/* banner and logo */}
         <div className="flex items-center gap-4 h-full">
-          <div className="w-32 h-full relative opacity-80 hidden xl:block py-2">
-            <Image
-              src="/assets/banner.png"
-              alt="Banner"
-              fill
-              className="object-contain"
-              priority={false}
-            />
-          </div>
           <Link href="/" className="py-4">
-            <h1 className="text-2xl font-light tracking-tight">
-              kyle zhang
-            </h1>
+            <h1 className="text-2xl font-light tracking-tight">kyle zhang</h1>
           </Link>
         </div>
 
@@ -41,7 +36,7 @@ const Header = () => {
           <a
             href="mailto:kylemzhang@gmail.com"
             className="text-sm font-light opacity-60 hover:opacity-100 transition-opacity duration-300"
-            style={{ color: 'var(--color-text)' }}
+            style={{ color: "var(--color-text)" }}
           >
             kylemzhang@gmail.com
           </a>
@@ -50,7 +45,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
-            style={{ color: 'var(--color-text)' }}
+            style={{ color: "var(--color-text)" }}
           >
             <FaGithub className="text-lg" />
           </a>
@@ -59,7 +54,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
-            style={{ color: 'var(--color-text)' }}
+            style={{ color: "var(--color-text)" }}
           >
             <FaLinkedinIn className="text-lg" />
           </a>
