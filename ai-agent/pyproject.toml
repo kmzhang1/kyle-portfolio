@@ -1,0 +1,29 @@
+[project]
+name = "scripts"
+version = "0.1.0"
+description = "Portfolio RAG ingestion with ByteDance Dolphin document parsing"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.13.0",
+    "faiss-cpu>=1.9.0",
+    "huggingface-hub>=0.27.0",
+    "langchain>=0.3.0",
+    "langchain-core>=0.3.0",
+    "langchain-text-splitters>=0.3.0",
+    "markdown>=3.7.0",
+    "numpy>=2.2.0",
+    "pygithub>=2.1.0",
+    "python-docx>=1.1.2",
+    "python-dotenv>=1.0.1",
+    "sentence-transformers>=3.3.0",
+    "torch>=2.1.0",
+    "torchvision>=0.16.0",
+    "transformers>=4.47.0",
+    "accelerate>=1.6.0",
+    "pymupdf>=1.26.0",
+    "opencv-python>=4.11.0",
+    "pillow>=9.3.0",
+    "timm>=0.5.4",
+    "omegaconf>=2.3.0",
+]

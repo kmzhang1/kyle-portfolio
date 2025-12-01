@@ -1,0 +1,54 @@
+[
+    {
+        "id": 0,
+        "text": "[PROJECT] [EXPERIENCE] [SKILLS] [EDUCATION] === Page 1 ===\nKyle Ming Zhang\n669-226-8281 | kylemzhang@gmail.com | linkedin | github\nEducation\nSanta Clara University\nSanta Clara, CA\nMaster of Science in Computer Science and Engineering\n2023 – 2025\nUniversity of California, Irvine\nIrvine, CA\nBachelor of Science in Computer Engineering\n2020 – 2022\nExperience\nFounding AI Engineer\nMarch 2025 – Present\nRevola AI\nSan Jose, CA\n• Engineered a real-time, multi-agent meeting infrastructure capable of sustaining 1,000+ concurrent autonomous\nconversations, driving a 12% increase in client website traffic to demo bookings\n• Architected and deployed a continual learning system that automatically analyzes and persists meeting context,\nresulting in a 31% increase in prospect return rates, and built a corresponding Analytics Dashboard (React,\nTypeScript) for performance tracking\n• Secured first enterprise customers by designing and implementing scalable Python onboarding services, which",
+        "metadata": {
+            "parent_document_id": "Kyle_Resume.pdf",
+            "parent_content_hash": "e614d674c7475f1bcd35fd77f2f20aaf3dcd435af90b4ade0a919a0f4877fa7a",
+            "source_type": "pdf_text_dolphin",
+            "source_file": "./data/documents/Kyle_Resume.pdf",
+            "num_pages": 1,
+            "parser": "dolphin-1.5",
+            "chunk_id": "f2201cde-c0cc-42c8-93f4-e90dde9ab698"
+        }
+    },
+    {
+        "id": 1,
+        "text": "[PROJECT] [EXPERIENCE] [SKILLS] [EDUCATION] TypeScript) for performance tracking\n• Secured first enterprise customers by designing and implementing scalable Python onboarding services, which\nautomated knowledge base ingestion, FAISS index generation, and customized agent setup\n• Tripled company website traffic to account creations by developing a GenAI-powered website scraper,\nauditing, and scoring system (Python/Google GenAI SDK) and integrating the system with CRM platforms\n(Hubspot, Zoho) to streamline qualified lead management\nHCI Research Lead\nSep. 2024 – June 2025\nSanta Clara University\nSanta Clara, CA\n• Full-stack development for app scraping SMAR research web tool; tripled site load capacity and built RESTful APIs\nto enable easy-to-use search and querying functionalities, ensuring 99% uptime for 200+ concurrent users\n• Spearheaded model development for an adaptive UI browser extension aiming to predict user intent for Youtube;\nexperimented with RAG systems, prompt engineering, and fusion models",
+        "metadata": {
+            "parent_document_id": "Kyle_Resume.pdf",
+            "parent_content_hash": "e614d674c7475f1bcd35fd77f2f20aaf3dcd435af90b4ade0a919a0f4877fa7a",
+            "source_type": "pdf_text_dolphin",
+            "source_file": "./data/documents/Kyle_Resume.pdf",
+            "num_pages": 1,
+            "parser": "dolphin-1.5",
+            "chunk_id": "7350275e-8831-4e17-b4e0-bfd17001ffb8"
+        }
+    },
+    {
+        "id": 2,
+        "text": "[PROJECT] [EXPERIENCE] [SKILLS] • Spearheaded model development for an adaptive UI browser extension aiming to predict user intent for Youtube;\nexperimented with RAG systems, prompt engineering, and fusion models\nSoftware Engineering Intern\nJan. 2022 – July 2022\nThales\nIrvine, CA\n• Led a team of 4 engineer interns to investigate and integrate third-party services on test servers to enable a fluid\nmicroservice environment, enhancing overall interoperability infrastructure\n• Utilized Docker, Kubernetes, DAPR, and Bash scripting to execute technical solutions on four different platforms\nProjects\nSystematic App Reviews | React, Express, Node, AWS\nSep. 2024 – June 2025\n• Engineered a highly responsive web application using React, driving a significant increase in researcher engagement\n• Designed a scalable backend and created RESTful APIs using Node.js and Express.js; enabled real-time retrieval of\napp metadata and rankings from Google Play and iOS App Store across multiple countries;",
+        "metadata": {
+            "parent_document_id": "Kyle_Resume.pdf",
+            "parent_content_hash": "e614d674c7475f1bcd35fd77f2f20aaf3dcd435af90b4ade0a919a0f4877fa7a",
+            "source_type": "pdf_text_dolphin",
+            "source_file": "./data/documents/Kyle_Resume.pdf",
+            "num_pages": 1,
+            "parser": "dolphin-1.5",
+            "chunk_id": "426beca3-80ae-4f89-8247-4456f1aa9cc2"
+        }
+    },
+    {
+        "id": 3,
+        "text": "[PROJECT] [EXPERIENCE] [SKILLS] app metadata and rankings from Google Play and iOS App Store across multiple countries;\n• Orchestrated the deployment of a full-stack tool on AWS EC2 instances, ensuring high availability and optimal\nperformance\nFocusMode | Python, Pinecone, OpenAI SDK\nJan. 2025 – May 2025\n• Built a RAG system with Pinecone, OpenAI GPT-4, and nomic-embed-text, reaching 76% accuracy for pilot study\n• Built a fusion model that combines categorical and numerical features encoded using a DeepFM and text\nembeddings to fuse textual, numerical, and categorical data\nTechnical Skills\nLanguages: Python, C, C++, Java, JavaScript, TypeScript, HTML, CSS, SQL, Bash\nFrameworks: PyTorch, Tensorflow, React.js, FastAPI, Express, Next.js, Lang(Chain/Graph), Google GenAI SDK\nDeveloper Tools: Node.js, Docker, Kubernetes, Git, Redis, MongoDB, Django, PostgreSQL, MySQL, Merge\nCloud: AWS (EC2, ECS Fargate, S3, SQS, Elasticache, Lambda, CloudWatch), Pinecone",
+        "metadata": {
+            "parent_document_id": "Kyle_Resume.pdf",
+            "parent_content_hash": "e614d674c7475f1bcd35fd77f2f20aaf3dcd435af90b4ade0a919a0f4877fa7a",
+            "source_type": "pdf_text_dolphin",
+            "source_file": "./data/documents/Kyle_Resume.pdf",
+            "num_pages": 1,
+            "parser": "dolphin-1.5",
+            "chunk_id": "aa50052a-9bed-4ade-a4e8-14e7b9de6637"
+        }
+    }
+]
