@@ -5,34 +5,35 @@ import Image from "next/image";
 
 const Home = () => {
   return (
-    <section className="h-full">
-      <header
-        className="w-full h-[200px] bg-cover bg-center"
-        style={{ backgroundImage: `url(${"./assets/banner.png"})` }}
-      ></header>
-      <div className="container mx-auto h-full">
-        <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
+    <section className="h-full flex items-center">
+      <div className="container mx-auto max-w-6xl px-6 xl:px-12 py-24">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-12">
           {/* text */}
-          <div className="text-center xl:text-left order-2 xl:order-none">
-            <span>hello i'm software developer</span>
-            <h2 className="h2">
-              <span className="text-accent">Kyle Ming Zhang</span>
+          <div className="text-left order-2 xl:order-none max-w-2xl">
+            <span className="text-sm opacity-60 font-light tracking-wide uppercase">Software Developer</span>
+            <h2 className="text-4xl xl:text-5xl font-light mt-4 mb-6 leading-tight">
+              Kyle Ming Zhang
             </h2>
-            <p className="max-w-[500px] mb-9 mt-6 text-white/80">
-              i love learning, creating, and collaborating. i have a passion for
-              making meaningful applications by integrating generative ai in
+            <p className="text-base mb-6 opacity-70 leading-relaxed">
+              I love learning, creating, and collaborating. I have a passion for
+              making meaningful applications by integrating generative AI in
               hopes of a positive impact on the world.
             </p>
-            <p>
-              feel free to connect with me on{" "}
+            <p className="text-sm opacity-60">
+              Feel free to connect with me on{" "}
               <a
                 href="https://www.linkedin.com/in/kyle-zhang-3a6551194/"
-                className="text-accent"
+                className="underline hover:opacity-100 transition-opacity"
+                style={{ color: 'var(--color-accent)' }}
               >
-                linkedin
+                LinkedIn
               </a>{" "}
-              or through my email at{" "}
-              <a href="mailto:kylemzhang@gmail.com" className="text-accent">
+              or through email at{" "}
+              <a
+                href="mailto:kylemzhang@gmail.com"
+                className="underline hover:opacity-100 transition-opacity"
+                style={{ color: 'var(--color-accent)' }}
+              >
                 kylemzhang@gmail.com
               </a>
               .
@@ -40,12 +41,11 @@ const Home = () => {
           </div>
 
           {/* photo */}
-          <div className="order-1 xl:order-none mb-8 xl:mb-0 mt-8">
+          <div className="order-1 xl:order-none">
             <Photo />
           </div>
         </div>
       </div>
-      {/* <Stats /> */}
     </section>
   );
 };
