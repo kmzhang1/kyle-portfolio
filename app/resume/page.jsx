@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   FaHtml5,
@@ -381,7 +381,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
 
-const Resume = () => {
+const ResumeContent = () => {
   const searchParams = useSearchParams();
   const tabParam = searchParams.get("tab");
 
@@ -589,6 +589,14 @@ const Resume = () => {
         </Tabs>
       </motion.div>
     </div>
+  );
+};
+
+const Resume = () => {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <ResumeContent />
+    </Suspense>
   );
 };
 
