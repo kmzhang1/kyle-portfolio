@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   FaHtml5,
   FaCss3,
@@ -380,6 +382,22 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
 
 const Resume = () => {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+
+  // Valid tab values
+  const validTabs = ["experience", "education", "skills", "about"];
+  const initialTab = validTabs.includes(tabParam) ? tabParam : "experience";
+
+  const [activeTab, setActiveTab] = useState(initialTab);
+
+  // Update tab when URL parameter changes
+  useEffect(() => {
+    if (tabParam && validTabs.includes(tabParam)) {
+      setActiveTab(tabParam);
+    }
+  }, [tabParam]);
+
   const groupedSkills = skills.skillList.reduce((acc, skill) => {
     if (!acc[skill.category]) {
       acc[skill.category] = [];
@@ -399,7 +417,8 @@ const Resume = () => {
         className="w-full max-w-6xl mx-auto px-6 xl:px-12 h-full"
       >
         <Tabs
-          defaultValue="experience"
+          value={activeTab}
+          onValueChange={setActiveTab}
           className="flex flex-col xl:flex-row gap-12 xl:items-start"
         >
           <div className="xl:sticky xl:top-24 xl:min-w-[200px]">
