@@ -1,102 +1,153 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useState } from "react";
-
-import { Swiper, SwiperSlide, SwiperSlider } from "swiper/react";
-import SwiperCore from "swiper/core";
-import "swiper/css";
-
-import { BsArrowUpRight, BsGit, BsGithub } from "react-icons/bs";
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
 import Link from "next/link";
 import Image from "next/image";
-import WorkSliderBtns from "@/components/WorkSliderBtns";
+import { projectsData } from "@/lib/projectsData";
+import {
+  FaChartBar,
+  FaBrain,
+  FaPalette,
+  FaLayerGroup,
+  FaRobot,
+} from "react-icons/fa";
 
-const projects = [
-  {
-    num: "01",
-    category: "Deep Learning",
-    title: "EEG2Tempi",
-    description: "Predicting Music Tempi from EEG",
-    stack: [{ name: "Python" }, { name: "Pytorch" }, { name: "MNE" }],
-    image: "/assets/work/eeg2tempi.png",
-    live: "",
-    github: "",
-  },
-  {
-    num: "02",
-    category: "Deep Learning",
-    title: "MINDSIGHT",
-    description:
-      "Making Intelligible Decompiled Source by Imposing Homomorphic Transforms",
-    stack: [
-      { name: "Python" },
-      { name: "Pytorch" },
-      { name: "Ghidra" },
-      { name: "scikit" },
-    ],
-    image: "/assets/work/mindsight.png",
-    live: "",
-    github: "",
-  },
-  {
-    num: "03",
-    category: "Web Design",
-    title: "Portfolio",
-    description: "Showcasing My Work and Skills",
-    stack: [{ name: "Next.js" }, { name: "Tailwind" }, { name: "Javascript" }],
-    image: "/assets/work/thumb1.png",
-    live: "",
-    github: "",
-  },
-  {
-    num: "04",
-    category: "Data Visualization",
-    title: "Toxic Awareness",
-    description: "A Visualization of California Toxic Levels",
-    stack: [{ name: "Next.js" }, { name: "Tailwind" }, { name: "Javascript" }],
-    image: "/assets/work/toxicsustain.png",
-    live: "",
-    github: "",
-  },
-  {
-    num: "05",
-    category: "Fullstack/DL",
-    title: "FocusMode",
-    description: "this is project 2",
-    stack: [{ name: "Next.js" }, { name: "Tailwind" }, { name: "Javascript" }],
-    image: "/assets/work/thumb2.png",
-    live: "",
-    github: "",
-  },
-  {
-    num: "06",
-    category: "Fullstack",
-    title: "SMAR",
-    description: "this is project 2",
-    stack: [{ name: "React.js" }, { name: "Express.js" }, { name: "Node.js" }],
-    image: "/assets/work/smar.png",
-    live: "",
-    github: "",
-  },
-];
-
-const Work = () => {
-  const [project, setProject] = useState(projects[0]);
-
-  const handleSlideChange = (swiper) => {
-    const currentIndex = swiper.activeIndex;
-
-    setProject(projects[currentIndex]);
+// Category icon mapping with react-icons and pastel colors
+const getCategoryIcon = (category) => {
+  const iconConfig = {
+    "DATA VISUALIZATION": { icon: FaChartBar, color: "#93c5fd" }, // pastel blue
+    "DEEP LEARNING": { icon: FaBrain, color: "#c4b5fd" }, // pastel purple
+    "WEB DESIGN": { icon: FaPalette, color: "#f9a8d4" }, // pastel pink
+    FULLSTACK: { icon: FaLayerGroup, color: "#6ee7b7" }, // pastel green
+    "FULLSTACK/DL": { icon: FaRobot, color: "#fcd34d" }, // pastel amber
   };
+  return iconConfig[category] || { icon: FaLayerGroup, color: "#9ca3af" };
+};
+
+const ProjectCard = ({ project, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.1 }}
+    >
+      <Link href={`/projects/${project.slug}`}>
+        <div className="group relative overflow-hidden rounded-lg border border-black/10 dark:border-white/10 bg-white dark:bg-transparent hover:border-accent/50 transition-all duration-300 h-[200px]">
+          {/* Project Image */}
+          <div className="relative w-full h-full">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
+            {/* Title - Top Left */}
+            <div className="absolute top-3 left-3 z-10">
+              <h3 className="text-base font-bold text-white drop-shadow-lg">
+                {project.title}
+              </h3>
+            </div>
+
+            {/* Category Icon - Top Right */}
+            <div className="absolute top-3 right-3 z-10">
+              {(() => {
+                const { icon: Icon, color } = getCategoryIcon(project.category);
+                return (
+                  <Icon className="w-6 h-6 drop-shadow-lg" style={{ color }} />
+                );
+              })()}
+            </div>
+
+            {/* Hover Overlay with Description */}
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col justify-center p-4">
+              <p className="text-white text-xs leading-relaxed mb-3">
+                {project.shortDescription}
+              </p>
+
+              {/* Tech Stack */}
+              {project.metadata && (
+                <div className="flex flex-wrap gap-1.5">
+                  {(() => {
+                    const allTechs = Object.values(project.metadata)
+                      .flat()
+                      .filter((item) => typeof item === "string")
+                      .slice(0, 4);
+                    return allTechs.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="text-[10px] px-2 py-0.5 rounded bg-white/10 text-white border border-white/20"
+                      >
+                        {tech}
+                      </span>
+                    ));
+                  })()}
+                </div>
+              )}
+
+              {/* View Arrow */}
+              <div className="absolute bottom-3 right-3">
+                <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center">
+                  <svg
+                    className="w-3 h-3 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+};
+
+const CategoryLegend = () => {
+  const categories = [
+    { name: "data visualization", Icon: FaChartBar, color: "#93c5fd" },
+    { name: "deep learning", Icon: FaBrain, color: "#c4b5fd" },
+    { name: "web design", Icon: FaPalette, color: "#f9a8d4" },
+    { name: "full stack", Icon: FaLayerGroup, color: "#6ee7b7" },
+    { name: "ai/ml hybrid", Icon: FaRobot, color: "#fcd34d" },
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4, delay: 0.2 }}
+      className="bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-lg p-3"
+    >
+      <h3 className="text-xs font-semibold text-black/70 dark:text-white/70 mb-2 tracking-wider">
+        categories
+      </h3>
+      <div className="space-y-1.5">
+        {categories.map((cat, idx) => (
+          <div key={idx} className="flex items-center gap-2">
+            <cat.Icon className="w-5 h-5" style={{ color: cat.color }} />
+            <span className="text-xs text-black/70 dark:text-white/70">
+              {cat.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+const Projects = () => {
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -104,149 +155,39 @@ const Work = () => {
         opacity: 1,
         transition: { delay: 0.1, duration: 0.2, ease: "easeIn" },
       }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+      className="min-h-[80vh] py-12 xl:py-16"
     >
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-          {/* project text description */}
-          <motion.div
-            key={project.num}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.2 }}
-            className="w-full xl:w-[50%] xl:h-[460px] flex flex-col
-          xl:justify-between order-2 xl:order-none"
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="mb-8">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="text-3xl xl:text-4xl font-bold"
           >
-            <div className="flex flex-col gap-[30px] h-50">
-              {/* outline num */}
-              <div className="leading-none font-extrabold">
-                <div className="flex items-baseline gap-4">
-                  <span className="text-7xl text-transparent text-outline">
-                    {project.num}
-                  </span>
-                  <span className="text-5xl bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent">
-                    {project.title}
-                  </span>
-                </div>
-              </div>
-              {/* project category */}
-              <div className="inline-flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
-                <h2 className="text-[30px] font-bold leading-none capitalize bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-                  {project.category} project
-                </h2>
-              </div>
-              {/* project description */}
-              <p className="text-black/70 dark:text-white/70 text-lg leading-relaxed">{project.description}</p>
-              {/* stack */}
-              <ul className="flex flex-wrap gap-3">
-                {project.stack.map((item, index) => {
-                  return (
-                    <li
-                      key={index}
-                      className="px-4 py-2 rounded-full bg-accent/10 border border-accent/20
-                      text-accent hover:bg-accent/20 hover:border-accent/40
-                      transition-all duration-300 text-sm font-medium backdrop-blur-sm"
-                    >
-                      {item.name}
-                    </li>
-                  );
-                })}
-              </ul>
-              {/* border */}
-              <div className="border-t border-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-              {/* buttons */}
-              <div className="flex items-center gap-4">
-                {/* live demo */}
-                <Link href={project.live}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger
-                        className="w-[70px] h-[70px] rounded-full
-                      bg-white/5 hover:bg-white/10 backdrop-blur-sm
-                      flex justify-center items-center group
-                      border border-white/10 hover:border-accent/50
-                      transition-all duration-300 hover:scale-110"
-                      >
-                        <BsArrowUpRight className="text-white text-3xl group-hover:text-accent transition-colors" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live Demo</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                {/* github link */}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger
-                        className="w-[70px] h-[70px] rounded-full
-                      bg-white/5 hover:bg-white/10 backdrop-blur-sm
-                      flex justify-center items-center group
-                      border border-white/10 hover:border-accent/50
-                      transition-all duration-300 hover:scale-110"
-                      >
-                        <BsGithub className="text-white text-3xl group-hover:text-accent transition-colors" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github Repository</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-              </div>
+            <span className="bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent">
+              projects
+            </span>
+          </motion.h1>
+        </div>
+
+        {/* Content with Grid and Legend */}
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Projects Grid */}
+          <div className="flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {projectsData.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
+              ))}
             </div>
-          </motion.div>
-          {/* swiper */}
-          <div className="w-full xl:w-[50%]">
-            <Swiper
-              spaceBetween={30}
-              slidesPerView={1}
-              keyboard={{ enabled: true }}
-              direction="horizontal"
-              className="xl:h-[520px] mb-12"
-              onSlideChange={handleSlideChange}
-            >
-              {projects.map((project, index) => {
-                return (
-                  <SwiperSlide key={index} className="w-full">
-                    <div className="h-[460px] relative group flex justify-center items-center
-                      bg-gradient-to-br from-accent/5 via-transparent to-accent-hover/5
-                      rounded-xl overflow-hidden border border-white/10
-                      hover:border-accent/30 transition-all duration-500">
-                      {/* gradient overlay */}
-                      <div className="absolute top-0 bottom-0 w-full h-full
-                        bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10
-                        group-hover:from-black/40 transition-all duration-500"></div>
-                      {/* accent glow */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-accent/0 to-accent/0
-                        group-hover:from-accent/10 group-hover:to-accent-hover/10
-                        transition-all duration-500 z-10"></div>
-                      {/* image */}
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={project.image}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
-              {/* slider buttons */}
-              <WorkSliderBtns
-                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)]
-              xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-accent/90 hover:bg-accent backdrop-blur-sm text-white text-[22px]
-              w-[44px] h-[44px] flex justify-center items-center transition-all
-              rounded-lg border border-white/10 hover:border-white/30 hover:scale-110
-              shadow-lg hover:shadow-accent/50"
-                iconsStyles="transition-transform group-hover:scale-110"
-              />
-            </Swiper>
+          </div>
+
+          {/* Legend - Right Side */}
+          <div className="lg:w-64 flex-shrink-0">
+            <div className="lg:sticky lg:top-24">
+              <CategoryLegend />
+            </div>
           </div>
         </div>
       </div>
@@ -254,4 +195,4 @@ const Work = () => {
   );
 };
 
-export default Work;
+export default Projects;

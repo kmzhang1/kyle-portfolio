@@ -3,6 +3,7 @@ import "./globals.css";
 
 // components
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import AiAgent from "@/components/AiAgent";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
           <main className="flex-1">
             <PageTransition>{children}</PageTransition>
           </main>
+          <Footer />
           <AiAgent />
         </ThemeProvider>
       </body>

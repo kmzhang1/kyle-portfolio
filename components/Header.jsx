@@ -8,6 +8,7 @@ import ThemeToggle from "./ThemeToggle";
 // components
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
+import QuoteCycler from "./QuoteCycler";
 
 const Header = () => {
   return (
@@ -18,62 +19,29 @@ const Header = () => {
         backgroundColor: "var(--color-primary)",
       }}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        {/* banner and logo */}
-        <div className="flex items-center gap-4 h-full">
+      <div className="flex items-center justify-between w-full">
+        {/* Empty spacer for balance */}
+        <div className="w-[50px]"></div>
+
+        {/* Main content centered with quote cycler */}
+        <div className="flex items-center gap-8">
+          {/* banner and logo */}
           <Link href="/" className="py-4">
             <h1 className="text-2xl font-light tracking-tight">kyle zhang</h1>
           </Link>
+
+          {/* desktop nav */}
+          <div className="hidden xl:flex">
+            <Nav />
+          </div>
+
+          {/* Quote cycler next to nav */}
+          <QuoteCycler />
         </div>
 
-        {/* desktop nav */}
-        <div className="hidden xl:flex items-center gap-8">
-          <Nav />
-        </div>
-
-        {/* social buttons and theme toggle */}
-        <div className="hidden xl:flex items-center gap-3">
-          <a
-            href="mailto:kylemzhang@gmail.com"
-            className="text-sm font-light opacity-60 hover:opacity-100 transition-opacity duration-300"
-            style={{ color: "var(--color-text)" }}
-          >
-            kylemzhang@gmail.com
-          </a>
-          <a
-            href="https://github.com/kmzhang1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
-            style={{ color: "var(--color-text)" }}
-          >
-            <FaGithub className="text-lg" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/kyle-zhang-3a6551194/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
-            style={{ color: "var(--color-text)" }}
-          >
-            <FaLinkedinIn className="text-lg" />
-          </a>
-          <a href="/Kyle_Resume.pdf" target="_blank" rel="noopener noreferrer">
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex items-center gap-2 text-sm font-light"
-            >
-              <span className="hidden lg:inline">CV</span>
-              <FiDownload className="text-base" />
-            </Button>
-          </a>
+        {/* theme toggle at absolute right */}
+        <div className="hidden xl:flex items-center gap-3 pr-4">
           <ThemeToggle />
-        </div>
-
-        {/* mobile nav*/}
-        <div className="xl:hidden">
-          <MobileNav />
         </div>
       </div>
     </header>

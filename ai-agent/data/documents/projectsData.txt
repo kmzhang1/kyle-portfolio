@@ -1,0 +1,181 @@
+// Project metadata configuration
+// Each project can include: title, description, category, tags, features, video, links, etc.
+
+export const projectsData = [
+  {
+    id: "landfill-lens",
+    slug: "landfill-lens",
+    title: "landfill lens",
+    category: "data visualization",
+    shortDescription: "a comprehensive data visualization dashboard that explores toxic chemical waste production across california industries.",
+    description: "a comprehensive data visualization dashboard that explores toxic chemical waste production across california industries. built with react and developed custom visualization charts from scratch using d3.js and modern libraries. features interactive heat maps, chemical database with exposure information, industry analytics, and custom-built chart.js visualizations. addresses the critical issue of 10+ million tons of toxic waste managed annually across 800+ types.",
+    features: [
+      "interactive heat maps, chemical database with exposure information, industry analytics, and custom-built chart.js visualizations",
+      "addresses the critical issue of 10+ million tons of toxic waste managed annually across 800+ types.",
+    ],
+    // Dynamic metadata - customize field names and values for each project!
+    metadata: {
+      "languages": ["javascript"],
+      "frameworks": ["react 18", "vite", "tailwind css"],
+      "data visualization libraries": ["d3.js", "chart.js", "visx (airbnb)", "observable hq"],
+    },
+    video: "", // Add your video path here if available
+    image: "/assets/work/toxicsustain.png",
+    liveUrl: "https://landfillens.com",
+    githubUrl: "https://github.com/AryanBagade/landfill-lens",
+  },
+  {
+    id: "eeg2tempi",
+    slug: "eeg2tempi",
+    title: "eeg2tempi",
+    category: "deep learning",
+    shortDescription: "predicting music tempi from eeg signals using deep learning.",
+    description: "a novel deep learning approach to predict music tempo from brain activity patterns captured through eeg signals. this research project explores the intersection of neuroscience and music cognition.",
+    features: [
+      "eeg signal preprocessing and feature extraction",
+      "custom neural network architecture for tempo prediction",
+      "real-time signal processing pipeline",
+      "visualization of brain activity patterns",
+    ],
+    // Example: Different fields for a deep learning project
+    metadata: {
+      "languages": ["python"],
+      "deep learning": ["pytorch", "mne"],
+      "scientific libraries": ["numpy", "scipy", "matplotlib"],
+      "research area": "neuroscience & music cognition",
+    },
+    image: "/assets/work/eeg2tempi.png",
+    liveUrl: "",
+    githubUrl: "",
+  },
+  {
+    id: "mindsight",
+    slug: "mindsight",
+    title: "mindsight",
+    category: "deep learning",
+    shortDescription: "making intelligible decompiled source by imposing homomorphic transforms.",
+    description: "a research project focused on improving the readability and intelligibility of decompiled source code through the application of homomorphic transformations and machine learning techniques.",
+    features: [
+      "decompiled code analysis using ghidra",
+      "machine learning models for code transformation",
+      "pattern recognition in assembly code",
+      "automated intelligibility enhancement",
+    ],
+    // Example: Custom fields for a research project
+    metadata: {
+      "languages": ["python"],
+      "ml frameworks": ["pytorch", "scikit-learn", "tensorflow"],
+      "tools": ["ghidra", "llvm"],
+      "application domain": "reverse engineering & code analysis",
+    },
+    image: "/assets/work/mindsight.png",
+    liveUrl: "",
+    githubUrl: "",
+  },
+  {
+    id: "portfolio",
+    slug: "portfolio",
+    title: "portfolio",
+    category: "web design",
+    shortDescription: "showcasing my work and skills through an interactive portfolio website.",
+    description: "a modern, responsive portfolio website built with next.js and tailwind css. features smooth animations, dark mode support, and an integrated ai chatbot for enhanced user interaction.",
+    features: [
+      "responsive design with dark/light mode",
+      "smooth page transitions and animations",
+      "integrated ai chatbot assistant",
+      "optimized performance and seo",
+    ],
+    // Example: Web project with specific tech categories
+    metadata: {
+      "stack": ["next.js", "tailwind css", "javascript"],
+      "animation": ["framer motion"],
+      "icons": ["react icons"],
+      "deployment": "vercel",
+    },
+    image: "/assets/work/thumb1.png",
+    liveUrl: "",
+    githubUrl: "",
+  },
+  {
+    id: "toxic-awareness",
+    slug: "toxic-awareness",
+    title: "toxic awareness",
+    category: "data visualization",
+    shortDescription: "a visualization of california toxic levels.",
+    description: "an interactive data visualization platform exploring toxic chemical levels across california, providing insights into environmental health and safety concerns.",
+    features: [
+      "geographic heat mapping of toxic levels",
+      "time-series analysis of pollution trends",
+      "interactive filtering and data exploration",
+      "comparative regional analysis",
+    ],
+    metadata: {
+      "frontend": ["next.js", "tailwind css", "javascript"],
+      "visualization": ["d3.js", "recharts"],
+      "data source": "california epa",
+    },
+    image: "/assets/work/toxicsustain.png",
+    liveUrl: "",
+    githubUrl: "",
+  },
+  {
+    id: "focusmode",
+    slug: "focusmode",
+    title: "focusmode",
+    category: "fullstack/dl",
+    shortDescription: "a productivity application combining full-stack development with deep learning.",
+    description: "an intelligent productivity tool that uses machine learning to help users maintain focus and optimize their work sessions. features smart notifications, distraction blocking, and personalized productivity insights.",
+    features: [
+      "ai-powered focus session optimization",
+      "smart distraction detection and blocking",
+      "personalized productivity analytics",
+      "cross-platform synchronization",
+    ],
+    // Example: Hybrid project with multiple tech areas
+    metadata: {
+      "frontend": ["next.js", "tailwind css", "javascript"],
+      "backend": ["python", "fastapi"],
+      "ml/ai": ["tensorflow.js"],
+      "state management": ["react query"],
+      "platform": "desktop & mobile",
+    },
+    image: "/assets/work/thumb2.png",
+    liveUrl: "",
+    githubUrl: "",
+  },
+  {
+    id: "smar",
+    slug: "smar",
+    title: "smar",
+    category: "fullstack",
+    shortDescription: "a full-stack web application built with modern technologies.",
+    description: "smar is a comprehensive full-stack application leveraging react.js for the frontend and express.js with node.js for the backend. it provides a robust and scalable solution for modern web application needs.",
+    features: [
+      "restful api architecture",
+      "real-time data synchronization",
+      "user authentication and authorization",
+      "responsive and intuitive ui",
+    ],
+    // Example: Traditional full-stack structure
+    metadata: {
+      "frontend": ["react.js"],
+      "backend": ["express.js", "node.js"],
+      "database": ["mongodb"],
+      "real-time": ["socket.io"],
+      "architecture": "rest api",
+    },
+    image: "/assets/work/smar.png",
+    liveUrl: "",
+    githubUrl: "",
+  },
+];
+
+// Helper function to get project by slug
+export function getProjectBySlug(slug) {
+  return projectsData.find((project) => project.slug === slug);
+}
+
+// Helper function to get all project slugs (for static generation)
+export function getAllProjectSlugs() {
+  return projectsData.map((project) => project.slug);
+}

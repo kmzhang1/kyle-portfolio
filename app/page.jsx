@@ -9,25 +9,25 @@ const Home = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between gap-12">
           {/* text */}
           <div className="text-left order-2 xl:order-none max-w-2xl">
-            <span className="text-sm opacity-60 font-light tracking-wide uppercase">
-              AI Engineer/Software Developer
+            <span className="text-sm opacity-60 font-light tracking-wide">
+              ai engineer/software developer
             </span>
             <h2 className="text-4xl xl:text-5xl font-light mt-4 mb-6 leading-tight">
-              Kyle Ming Zhang
+              kyle ming zhang
             </h2>
             <p className="text-base mb-6 opacity-70 leading-relaxed">
-              Hi! Welcome! I love learning, creating, and collaborating. I have
-              a passion for integrating generative AI with applications in hopes
+              hi! welcome! i love learning, creating, and collaborating. i have
+              a passion for integrating generative ai with applications in hopes
               of creating a meaningful impact on the world.
             </p>
             <p className="text-sm opacity-60">
-              Feel free to connect with me on{" "}
+              feel free to connect with me on{" "}
               <a
                 href="https://www.linkedin.com/in/kyle-zhang-3a6551194/"
                 className="underline hover:opacity-100 transition-opacity font-semibold"
                 style={{ color: "var(--color-accent)" }}
               >
-                LinkedIn
+                linkedin
               </a>{" "}
               or through email at{" "}
               <a

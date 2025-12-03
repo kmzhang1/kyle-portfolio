@@ -41,32 +41,32 @@ import { TbSql } from "react-icons/tb";
 // about data
 
 const about = {
-  title: "About Me",
-  description: "Live for yourself, not others.",
+  title: "about me",
+  description: "live for yourself, not others.",
   info: [
     {
-      fieldName: "Name",
-      fieldValue: "Kyle Zhang",
+      fieldName: "name",
+      fieldValue: "kyle ming zhang",
     },
     {
-      fieldName: "Phone",
+      fieldName: "phone",
       fieldValue: "(+1) 669 226 8281",
     },
     {
-      fieldName: "Experience",
-      fieldValue: "2+ Years",
+      fieldName: "experience",
+      fieldValue: "2+ years",
     },
     {
-      fieldName: "Email",
+      fieldName: "email",
       fieldValue: "kylemzhang@gmail.com",
     },
     {
-      fieldName: "Nationality",
-      fieldValue: "Asian",
+      fieldName: "nationality",
+      fieldValue: "asian",
     },
     {
-      fieldName: "Languages",
-      fieldValue: "English, Chinese (Professional)",
+      fieldName: "languages",
+      fieldValue: "english, chinese (professional)",
     },
   ],
 };
@@ -74,39 +74,39 @@ const about = {
 // experience data
 const experience = {
   icon: "/assets/resume/badge.svg",
-  title: "My Experience",
-  description: "Work hard to play hard.",
+  title: "my experience",
+  description: "either you run the day, or the day runs you.",
   items: [
     {
-      company: "Revola AI",
-      position: "Founding AI Engineer",
-      duration: "Mar 2025 - Present",
+      company: "revola ai",
+      position: "founding ai engineer",
+      duration: "mar 2025 - present",
       description1:
-        "• Engineered a real-time, multi-agent meeting infrastructure capable of sustaining 1,000+ concurrent autonomous conversations, driving a 12% increase in client website traffic to demo bookings",
+        "• engineered a real-time, multi-agent meeting infrastructure capable of sustaining 1,000+ concurrent autonomous conversations, driving a 12% increase in client website traffic to demo bookings",
       description2:
-        "• Architected and deployed a continual learning system that automatically analyzes and persists meeting context, resulting in a 31% increase in prospect return rates, and built a corresponding Analytics Dashboard (React, TypeScript) for performance tracking",
+        "• architected and deployed a continual learning system that automatically analyzes and persists meeting context, resulting in a 31% increase in prospect return rates, and built a corresponding analytics dashboard (react, typescript) for performance tracking",
       description3:
-        "• Secured first enterprise customers by designing and implementing scalable Python onboarding services, which automated knowledge base ingestion, FAISS index generation, and customized agent setup",
+        "• secured first enterprise customers by designing and implementing scalable python onboarding services, which automated knowledge base ingestion, faiss index generation, and customized agent setup",
       description4:
-        "• Tripled company website traffic to account creations by developing a GenAI-powered website scraper, auditing, and scoring system (Python/Google GenAI SDK) and integrating the system with CRM platforms (Hubspot, Zoho) to streamline qualified lead management",
+        "• tripled company website traffic to account creations by developing a genai-powered website scraper, auditing, and scoring system (python/google genai sdk) and integrating the system with crm platforms (hubspot, zoho) to streamline qualified lead management",
     },
     {
-      company: "Santa Clara University",
-      position: "HCI Research Lead",
-      duration: "Sept 2024 - Jun 2025",
+      company: "santa clara university",
+      position: "hci research lead",
+      duration: "sept 2024 - jun 2025",
       description1:
-        "• Full-stack development for app scraping SMAR research web tool; tripled site load capacity and built RESTful APIs to enable easy-to-use search and querying functionalities, ensuring 99% uptime for 200+ concurrent users",
+        "• full-stack development for app scraping smar research web tool; tripled site load capacity and built restful apis to enable easy-to-use search and querying functionalities, ensuring 99% uptime for 200+ concurrent users",
       description2:
-        "• Spearheaded model development for an adaptive UI browser extension aiming to predict user intent for Youtube; experimented with RAG systems, prompt engineering, and fusion models",
+        "• spearheaded model development for an adaptive ui browser extension aiming to predict user intent for youtube; experimented with rag systems, prompt engineering, and fusion models",
     },
     {
-      company: "Thales",
-      position: "Software Engineering Intern",
-      duration: "Jan 2022 - Jul 2022",
+      company: "thales",
+      position: "software engineering intern",
+      duration: "jan 2022 - jul 2022",
       description1:
-        "• Led a team of 4 engineer interns to investigate and integrate third-party services on test servers to enable a fluid microservice environment, enhancing overall interoperability infrastructure",
+        "• led a team of 4 engineer interns to investigate and integrate third-party services on test servers to enable a fluid microservice environment, enhancing overall interoperability infrastructure",
       description2:
-        "• Utilized Docker, Kubernetes, DAPR, and Bash scripting to execute technical solutions on four different platforms",
+        "• utilized docker, kubernetes, dapr, and bash scripting to execute technical solutions on four different platforms",
     },
   ],
 };
@@ -114,255 +114,256 @@ const experience = {
 // education data
 const education = {
   icon: "/assets/resume/cap.svg",
-  title: "My Education",
-  description: "Where learning begins.",
+  title: "my education",
+  description:
+    "the beautiful thing about learning is nobody can take it away from you.",
   items: [
     {
-      institution: "Santa Clara University",
-      position: "M.S. Computer Science and Engineering",
-      degree: "Masters",
-      duration: "Sept 2023 - Mar 2025",
-      gpa: "GPA: 3.86/4.00",
+      institution: "santa clara university",
+      position: "m.s. computer science and engineering",
+      degree: "masters",
+      duration: "sept 2023 - mar 2025",
+      gpa: "gpa: 3.75/4.00",
     },
     {
-      institution: "University of California, Irvine",
-      position: "B.S. Computer Engineering",
-      degree: "Bachelors",
-      duration: "Sept 2020 - Jun 2022",
-      gpa: "GPA: 3.75/4.00",
+      institution: "university of california, irvine",
+      position: "b.s. computer engineering",
+      degree: "bachelors",
+      duration: "sept 2020 - jun 2022",
+      gpa: "gpa: 3.86/4.00",
     },
   ],
 };
 
 // skills
 const skills = {
-  title: "My Skills",
-  description: "Keep improving everyday.",
+  title: "my skills",
+  description: "the expert in anything was once a beginner.",
   skillList: [
     // Languages
     {
       icon: <FaPython />,
-      name: "Python",
-      category: "Languages",
+      name: "python",
+      category: "languages",
       type: "backend",
     },
     {
       icon: <SiC />,
-      name: "C",
-      category: "Languages",
+      name: "c",
+      category: "languages",
       type: "backend",
     },
     {
       icon: <SiCplusplus />,
-      name: "C++",
-      category: "Languages",
+      name: "c++",
+      category: "languages",
       type: "backend",
     },
     {
       icon: <FaJava />,
-      name: "Java",
-      category: "Languages",
+      name: "java",
+      category: "languages",
       type: "backend",
     },
     {
       icon: <FaJs />,
-      name: "JavaScript",
-      category: "Languages",
+      name: "javascript",
+      category: "languages",
       type: "frontend",
     },
     {
       icon: <SiTypescript />,
-      name: "TypeScript",
-      category: "Languages",
+      name: "typescript",
+      category: "languages",
       type: "frontend",
     },
     {
       icon: <FaHtml5 />,
-      name: "HTML",
-      category: "Languages",
+      name: "html",
+      category: "languages",
       type: "frontend",
     },
     {
       icon: <FaCss3 />,
-      name: "CSS",
-      category: "Languages",
+      name: "css",
+      category: "languages",
       type: "frontend",
     },
     {
       icon: <TbSql />,
-      name: "SQL",
-      category: "Languages",
+      name: "sql",
+      category: "languages",
       type: "backend",
     },
     {
       icon: <SiGnubash />,
-      name: "Bash",
-      category: "Languages",
+      name: "bash",
+      category: "languages",
       type: "backend",
     },
     // Frameworks
     {
       icon: <SiPytorch />,
-      name: "PyTorch",
-      category: "Frameworks",
+      name: "pytorch",
+      category: "frameworks",
       type: "ai",
     },
     {
       icon: <SiTensorflow />,
-      name: "TensorFlow",
-      category: "Frameworks",
+      name: "tensorflow",
+      category: "frameworks",
       type: "ai",
     },
     {
       icon: <FaReact />,
-      name: "React.js",
-      category: "Frameworks",
+      name: "react.js",
+      category: "frameworks",
       type: "frontend",
     },
     {
       icon: <SiFastapi />,
-      name: "FastAPI",
-      category: "Frameworks",
+      name: "fastapi",
+      category: "frameworks",
       type: "backend",
     },
     {
       icon: <SiExpress />,
-      name: "Express",
-      category: "Frameworks",
+      name: "express",
+      category: "frameworks",
       type: "backend",
     },
     {
       icon: <SiNextdotjs />,
-      name: "Next.js",
-      category: "Frameworks",
+      name: "next.js",
+      category: "frameworks",
       type: "frontend",
     },
     {
       icon: <SiLangchain />,
-      name: "LangChain",
-      category: "Frameworks",
+      name: "langchain",
+      category: "frameworks",
       type: "ai",
     },
     {
       icon: <SiLangchain />,
-      name: "LangGraph",
-      category: "Frameworks",
+      name: "langgraph",
+      category: "frameworks",
       type: "ai",
     },
     {
       icon: <SiGooglegemini />,
-      name: "Google GenAI SDK",
-      category: "Frameworks",
+      name: "google genai sdk",
+      category: "frameworks",
       type: "ai",
     },
     // Developer Tools
     {
       icon: <FaNodeJs />,
-      name: "Node.js",
-      category: "Developer Tools",
+      name: "node.js",
+      category: "developer tools",
       type: "backend",
     },
     {
       icon: <SiDocker />,
-      name: "Docker",
-      category: "Developer Tools",
+      name: "docker",
+      category: "developer tools",
       type: "devops",
     },
     {
       icon: <SiKubernetes />,
-      name: "Kubernetes",
-      category: "Developer Tools",
+      name: "kubernetes",
+      category: "developer tools",
       type: "devops",
     },
     {
       icon: <FaGithub />,
-      name: "Git",
-      category: "Developer Tools",
+      name: "git",
+      category: "developer tools",
       type: "devops",
     },
     {
       icon: <DiRedis />,
-      name: "Redis",
-      category: "Developer Tools",
+      name: "redis",
+      category: "developer tools",
       type: "backend",
     },
     {
       icon: <DiMongodb />,
-      name: "MongoDB",
-      category: "Developer Tools",
+      name: "mongodb",
+      category: "developer tools",
       type: "backend",
     },
     {
       icon: <SiDjango />,
-      name: "Django",
-      category: "Developer Tools",
+      name: "django",
+      category: "developer tools",
       type: "backend",
     },
     {
       icon: <SiPostgresql />,
-      name: "PostgreSQL",
-      category: "Developer Tools",
+      name: "postgresql",
+      category: "developer tools",
       type: "backend",
     },
     {
       icon: <SiMysql />,
-      name: "MySQL",
-      category: "Developer Tools",
+      name: "mysql",
+      category: "developer tools",
       type: "backend",
     },
     {
       icon: <FaGithub />,
-      name: "Merge",
-      category: "Developer Tools",
+      name: "merge",
+      category: "developer tools",
       type: "backend",
     },
     // Cloud
     {
       icon: <SiAmazons3 />,
-      name: "AWS EC2",
-      category: "Cloud",
+      name: "aws ec2",
+      category: "cloud",
       type: "devops",
     },
     {
       icon: <SiAmazons3 />,
-      name: "AWS ECS Fargate",
-      category: "Cloud",
+      name: "aws ecs fargate",
+      category: "cloud",
       type: "devops",
     },
     {
       icon: <SiAmazons3 />,
-      name: "AWS S3",
-      category: "Cloud",
+      name: "aws s3",
+      category: "cloud",
       type: "devops",
     },
     {
       icon: <SiAmazons3 />,
-      name: "AWS SQS",
-      category: "Cloud",
+      name: "aws sqs",
+      category: "cloud",
       type: "devops",
     },
     {
       icon: <SiAmazons3 />,
-      name: "AWS Elasticache",
-      category: "Cloud",
+      name: "aws elasticache",
+      category: "cloud",
       type: "devops",
     },
     {
       icon: <SiAwslambda />,
-      name: "AWS Lambda",
-      category: "Cloud",
+      name: "aws lambda",
+      category: "cloud",
       type: "devops",
     },
     {
       icon: <SiAmazons3 />,
-      name: "AWS CloudWatch",
-      category: "Cloud",
+      name: "aws cloudwatch",
+      category: "cloud",
       type: "devops",
     },
     {
       icon: <SiAmazons3 />,
-      name: "Pinecone",
-      category: "Cloud",
+      name: "pinecone",
+      category: "cloud",
       type: "ai",
     },
   ],
@@ -380,6 +381,7 @@ import {
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
+import Timeline from "@/components/Timeline";
 
 const ResumeContent = () => {
   const searchParams = useSearchParams();
@@ -423,10 +425,30 @@ const ResumeContent = () => {
         >
           <div className="xl:sticky xl:top-24 xl:min-w-[200px]">
             <TabsList className="flex flex-col w-full gap-2 mx-auto xl:mx-0 bg-transparent">
-              <TabsTrigger value="experience" className="w-full justify-start text-sm font-light">Experience</TabsTrigger>
-              <TabsTrigger value="education" className="w-full justify-start text-sm font-light">Education</TabsTrigger>
-              <TabsTrigger value="skills" className="w-full justify-start text-sm font-light">Skills</TabsTrigger>
-              <TabsTrigger value="about" className="w-full justify-start text-sm font-light">About</TabsTrigger>
+              <TabsTrigger
+                value="experience"
+                className="w-full justify-start text-sm font-light"
+              >
+                experience
+              </TabsTrigger>
+              <TabsTrigger
+                value="education"
+                className="w-full justify-start text-sm font-light"
+              >
+                education
+              </TabsTrigger>
+              <TabsTrigger
+                value="skills"
+                className="w-full justify-start text-sm font-light"
+              >
+                skills
+              </TabsTrigger>
+              <TabsTrigger
+                value="about"
+                className="w-full justify-start text-sm font-light"
+              >
+                about
+              </TabsTrigger>
             </TabsList>
           </div>
 
@@ -436,47 +458,15 @@ const ResumeContent = () => {
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-8 text-left">
                 <div>
-                  <h3 className="text-2xl font-light mb-2">{experience.title}</h3>
-                  <p className="text-sm opacity-60">
-                    {experience.description}
-                  </p>
+                  <p className="text-sm opacity-60">{experience.description}</p>
                 </div>
-                <ScrollArea className="h-[600px]">
-                  <ul className="space-y-8 pb-4 pr-4">
-                    {experience.items.map((item, index) => {
-                      return (
-                        <li
-                          key={index}
-                          className="border-l-2 pl-6 py-2 transition-colors"
-                          style={{ borderColor: 'var(--color-border)' }}
-                        >
-                          <div className="flex flex-col gap-3">
-                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                              <div>
-                                <h3 className="text-lg font-normal">
-                                  {item.position}
-                                </h3>
-                                <p className="text-sm opacity-60">{item.company}</p>
-                              </div>
-                              <span className="text-xs opacity-50 whitespace-nowrap">
-                                {item.duration}
-                              </span>
-                            </div>
-                            <div className="flex flex-col gap-2 opacity-70 text-sm leading-relaxed">
-                              <div>{item.description1}</div>
-                              <div>{item.description2}</div>
-                              {item.description3 && (
-                                <div>{item.description3}</div>
-                              )}
-                              {item.description4 && (
-                                <div>{item.description4}</div>
-                              )}
-                            </div>
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                <ScrollArea className="h-[600px]" id="experience-scroll">
+                  <div className="pb-4 pr-4 max-w-3xl">
+                    <Timeline
+                      items={experience.items}
+                      scrollContainerId="experience-scroll"
+                    />
+                  </div>
                 </ScrollArea>
               </div>
             </TabsContent>
@@ -484,10 +474,7 @@ const ResumeContent = () => {
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-8 text-left">
                 <div>
-                  <h3 className="text-2xl font-light mb-2">{education.title}</h3>
-                  <p className="text-sm opacity-60">
-                    {education.description}
-                  </p>
+                  <p className="text-sm opacity-60">{education.description}</p>
                 </div>
                 <ScrollArea className="h-[600px]">
                   <ul className="space-y-8 pb-4 pr-4">
@@ -496,7 +483,7 @@ const ResumeContent = () => {
                         <li
                           key={index}
                           className="border-l-2 pl-6 py-2 transition-colors"
-                          style={{ borderColor: 'var(--color-border)' }}
+                          style={{ borderColor: "var(--color-border)" }}
                         >
                           <div className="flex flex-col gap-2">
                             <h3 className="text-lg font-normal">
@@ -506,7 +493,9 @@ const ResumeContent = () => {
                               {item.position}
                             </p>
                             <p className="text-sm opacity-60">{item.gpa}</p>
-                            <span className="text-xs opacity-50">{item.duration}</span>
+                            <span className="text-xs opacity-50">
+                              {item.duration}
+                            </span>
                           </div>
                         </li>
                       );
@@ -519,30 +508,27 @@ const ResumeContent = () => {
             <TabsContent value="skills" className="w-full">
               <div className="flex flex-col gap-8 text-left">
                 <div>
-                  <h3 className="text-2xl font-light mb-2">{skills.title}</h3>
-                  <p className="text-sm opacity-60">
-                    {skills.description}
-                  </p>
+                  <p className="text-sm opacity-60">{skills.description}</p>
                 </div>
                 <ScrollArea className="h-[600px]">
                   <div className="pb-4 pr-4 space-y-8">
                     {Object.entries(groupedSkills).map(([category, skills]) => (
                       <div key={category}>
-                        <h2 className="text-base font-normal mb-4 opacity-80">{category}</h2>
+                        <h2 className="text-base font-normal mb-4 opacity-80">
+                          {category}
+                        </h2>
                         <ul className="flex flex-wrap gap-3">
                           {skills.map((skill, index) => {
                             return (
                               <li
                                 key={index}
                                 className="flex items-center gap-2 px-3 py-2 rounded-md border transition-colors text-sm opacity-80 hover:opacity-100"
-                                style={{ borderColor: 'var(--color-border)' }}
+                                style={{ borderColor: "var(--color-border)" }}
                               >
                                 <div className="text-base opacity-70">
                                   {skill.icon}
                                 </div>
-                                <span className="text-xs">
-                                  {skill.name}
-                                </span>
+                                <span className="text-xs">{skill.name}</span>
                               </li>
                             );
                           })}
@@ -554,16 +540,10 @@ const ResumeContent = () => {
               </div>
             </TabsContent>
             {/* about */}
-            <TabsContent
-              value="about"
-              className="w-full text-left"
-            >
+            <TabsContent value="about" className="w-full text-left">
               <div className="flex flex-col gap-8 min-h-[600px]">
                 <div>
-                  <h3 className="text-2xl font-light mb-2">{about.title}</h3>
-                  <p className="text-sm opacity-60">
-                    {about.description}
-                  </p>
+                  <p className="text-sm opacity-60">{about.description}</p>
                 </div>
                 <ul className="space-y-4 max-w-[600px]">
                   {about.info.map((item, index) => {
@@ -571,14 +551,12 @@ const ResumeContent = () => {
                       <li
                         key={index}
                         className="flex items-start gap-4 pb-4 border-b transition-colors"
-                        style={{ borderColor: 'var(--color-border)' }}
+                        style={{ borderColor: "var(--color-border)" }}
                       >
                         <span className="text-xs opacity-50 min-w-[100px] pt-1">
                           {item.fieldName}
                         </span>
-                        <span className="text-sm">
-                          {item.fieldValue}
-                        </span>
+                        <span className="text-sm">{item.fieldValue}</span>
                       </li>
                     );
                   })}
@@ -594,7 +572,13 @@ const ResumeContent = () => {
 
 const Resume = () => {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          loading...
+        </div>
+      }
+    >
       <ResumeContent />
     </Suspense>
   );

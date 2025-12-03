@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -13,21 +14,47 @@ import {
   MessageCircle,
   ExternalLink,
   Mail,
+  RotateCcw,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const CHAT_STORAGE_KEY = "kyle-portfolio-chat-history";
+const INITIAL_MESSAGE = {
+  role: "assistant",
+  content:
+    "hi! i'm kyle's ai assistant. ask me anything about his experience, projects, or skills!",
+};
+
 export default function AiAgent() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content:
-        "Hi! I'm Kyle's AI assistant. Ask me anything about his experience, projects, or skills!",
-    },
-  ]);
+  const [showTooltip, setShowTooltip] = useState(true);
+  const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef(null);
+
+  // Load chat history from localStorage on mount
+  useEffect(() => {
+    const savedHistory = localStorage.getItem(CHAT_STORAGE_KEY);
+    if (savedHistory) {
+      try {
+        const parsedHistory = JSON.parse(savedHistory);
+        if (Array.isArray(parsedHistory) && parsedHistory.length > 0) {
+          setMessages(parsedHistory);
+        }
+      } catch (error) {
+        console.error("Failed to load chat history:", error);
+      }
+    }
+  }, []);
+
+  // Save chat history to localStorage whenever messages change
+  useEffect(() => {
+    if (messages.length > 0) {
+      localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+    }
+  }, [messages]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -35,6 +62,20 @@ export default function AiAgent() {
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
+
+  // Hide tooltip after 5 seconds or when chat opens
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowTooltip(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      setShowTooltip(false);
+    }
+  }, [isOpen]);
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -65,6 +106,7 @@ export default function AiAgent() {
         role: "assistant",
         content: data.response,
         toolCalls: data.toolCalls, // Include tool calls in the message
+        highlights: data.highlights, // Include highlighted keywords
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
@@ -73,9 +115,9 @@ export default function AiAgent() {
       if (data.toolCalls) {
         data.toolCalls.forEach((toolCall) => {
           if (toolCall.action === "navigate" && toolCall.url) {
-            // Navigate to page
+            // Navigate to page using Next.js router (no page reload)
             setTimeout(() => {
-              window.location.href = toolCall.url;
+              router.push(toolCall.url);
             }, 500);
           } else if (toolCall.action === "resume_link" && toolCall.url) {
             // This will be rendered as a clickable link, no auto-navigation
@@ -89,7 +131,7 @@ export default function AiAgent() {
         {
           role: "assistant",
           content:
-            "Sorry, I'm having trouble responding right now. Please try again later.",
+            "sorry, i'm having trouble responding right now. please try again later.",
         },
       ]);
     } finally {
@@ -102,6 +144,51 @@ export default function AiAgent() {
       e.preventDefault();
       handleSend();
     }
+  };
+
+  // Clear chat history
+  const handleClearChat = () => {
+    setMessages([INITIAL_MESSAGE]);
+    localStorage.removeItem(CHAT_STORAGE_KEY);
+  };
+
+  // Render text with highlighted keywords
+  const renderHighlightedText = (text, highlights) => {
+    if (!highlights || highlights.length === 0) {
+      return <span>{text}</span>;
+    }
+
+    // Create a regex pattern that matches any of the highlight keywords (case-insensitive)
+    const pattern = highlights
+      .map((keyword) => keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")) // Escape special regex chars
+      .join("|");
+    const regex = new RegExp(`(${pattern})`, "gi");
+
+    // Split text by the pattern and wrap matches in highlight spans
+    const parts = text.split(regex);
+
+    return (
+      <span>
+        {parts.map((part, index) => {
+          // Check if this part matches any highlight keyword (case-insensitive)
+          const isHighlighted = highlights.some(
+            (keyword) => keyword.toLowerCase() === part.toLowerCase()
+          );
+
+          if (isHighlighted) {
+            return (
+              <span
+                key={index}
+                className="bg-accent/20 text-accent font-semibold px-1 rounded"
+              >
+                {part}
+              </span>
+            );
+          }
+          return <span key={index}>{part}</span>;
+        })}
+      </span>
+    );
   };
 
   // Render tool call actions (links, buttons)
@@ -132,7 +219,7 @@ export default function AiAgent() {
                 className="inline-flex items-center gap-2 px-3 py-2 bg-accent hover:bg-accent-hover text-white rounded-md text-sm transition-colors"
               >
                 <ExternalLink size={16} />
-                {`View ${toolCall.tab.charAt(0).toUpperCase() + toolCall.tab.slice(1)}`}
+                {`view ${toolCall.tab.toLowerCase()}`}
               </a>
             );
           }
@@ -148,11 +235,8 @@ export default function AiAgent() {
               >
                 <ExternalLink size={16} />
                 {toolCall.platform === "cv"
-                  ? "View Resume/CV"
-                  : `View ${
-                      toolCall.platform.charAt(0).toUpperCase() +
-                      toolCall.platform.slice(1)
-                    }`}
+                  ? "view resume/cv"
+                  : `view ${toolCall.platform.toLowerCase()}`}
               </a>
             );
           }
@@ -165,6 +249,24 @@ export default function AiAgent() {
 
   return (
     <>
+      {/* Tooltip Popup */}
+      <AnimatePresence>
+        {showTooltip && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-8 right-28 z-50 bg-accent text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium whitespace-nowrap"
+          >
+            ask me questions about kyle!
+            <div
+              className="absolute top-1/2 -right-2 -translate-y-1/2 w-0 h-0 border-t-8 border-b-8 border-l-8 border-transparent border-l-accent"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating Chat Button */}
       <motion.button
         initial={{ scale: 0 }}
@@ -194,13 +296,24 @@ export default function AiAgent() {
               className="bg-accent p-4 border-b"
               style={{ borderColor: "var(--color-border)" }}
             >
-              <h3 className="text-lg font-semibold flex items-center gap-2 text-white">
-                <Bot size={20} />
-                Ask About Kyle
-              </h3>
-              <p className="text-xs text-white/80 mt-1">
-                Powered by Google Gemini with Document RAG
-              </p>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold flex items-center gap-2 text-white">
+                    <Bot size={20} />
+                    ask about kyle
+                  </h3>
+                  <p className="text-xs text-white/80 mt-1">
+                    powered by google gemini with document rag
+                  </p>
+                </div>
+                <button
+                  onClick={handleClearChat}
+                  className="text-white/70 hover:text-white transition-colors"
+                  title="Clear chat history"
+                >
+                  <RotateCcw size={18} />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
@@ -237,7 +350,12 @@ export default function AiAgent() {
                       }
                     >
                       <p className="text-sm whitespace-pre-wrap">
-                        {message.content}
+                        {message.role === "assistant"
+                          ? renderHighlightedText(
+                              message.content,
+                              message.highlights
+                            )
+                          : message.content}
                       </p>
                       {message.role === "assistant" &&
                         renderToolCalls(message.toolCalls)}
@@ -282,7 +400,7 @@ export default function AiAgent() {
                         className="text-sm"
                         style={{ color: "var(--color-text-muted)" }}
                       >
-                        Thinking...
+                        thinking...
                       </span>
                     </div>
                   </motion.div>
@@ -305,7 +423,7 @@ export default function AiAgent() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask about projects, skills..."
+                  placeholder="ask about projects, skills..."
                   disabled={isLoading}
                   className="flex-1"
                   style={{
@@ -326,7 +444,7 @@ export default function AiAgent() {
                 className="text-xs text-center mt-2"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                AI may make mistakes. Double check all answers.
+                ai may make mistakes. double check all answers.
               </p>
             </div>
           </motion.div>
