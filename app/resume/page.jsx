@@ -119,14 +119,14 @@ const experience = {
     },
     {
       company: "ucsc vama lab",
-      position: "ustudent researcher",
+      position: "student researcher",
       duration: "may 2020 - mar 2021",
       description1:
         "• Wrote C++ testbenches for processor interfacing with Scala built RTL simulator",
     },
     {
       company: "ucsc assist lab",
-      position: "tudent researcher",
+      position: "student researcher",
       duration: "sept 2019 - mar 2021",
       description1:
         "• conducted own interviews and focus groups with visually impaired persons and specialists",
