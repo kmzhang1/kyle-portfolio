@@ -91,8 +91,8 @@ const experience = {
         "• tripled company website traffic to account creations by developing a genai-powered website scraper, auditing, and scoring system (python/google genai sdk) and integrating the system with crm platforms (hubspot, zoho) to streamline qualified lead management",
     },
     {
-      company: "santa clara university",
-      position: "hci research lead",
+      company: "santa clara university hci lab",
+      position: "research lead",
       duration: "sept 2024 - jun 2025",
       description1:
         "• full-stack development for app scraping smar research web tool; tripled site load capacity and built restful apis to enable easy-to-use search and querying functionalities, ensuring 99% uptime for 200+ concurrent users",
@@ -107,6 +107,40 @@ const experience = {
         "• led a team of 4 engineer interns to investigate and integrate third-party services on test servers to enable a fluid microservice environment, enhancing overall interoperability infrastructure",
       description2:
         "• utilized docker, kubernetes, dapr, and bash scripting to execute technical solutions on four different platforms",
+    },
+    {
+      company: "nsf",
+      position: "machine learning research intern",
+      duration: "jan 2022 - jul 2022",
+      description1:
+        "• collaborated closely with siemens engineers and uci researchers; leveraged sklearn and pytorch library tools to implement data clustering and early stopping for two graph auto-encoder models",
+      description2:
+        "• optimized and parallelized python dataset generator to extract graphical representations from binaries, doubling speed of dataset generation",
+    },
+    {
+      company: "ucsc vama lab",
+      position: "ustudent researcher",
+      duration: "may 2020 - mar 2021",
+      description1:
+        "• Wrote C++ testbenches for processor interfacing with Scala built RTL simulator",
+    },
+    {
+      company: "ucsc assist lab",
+      position: "tudent researcher",
+      duration: "sept 2019 - mar 2021",
+      description1:
+        "• conducted own interviews and focus groups with visually impaired persons and specialists",
+      description2:
+        "• used swift and python to develop an iOS app that used micro-routing to help blind navigation through bus and train stations",
+    },
+    {
+      company: "uc santa cruz",
+      position: "rtl/logic design tutor",
+      duration: "jan 2020 - june 2020",
+      description1:
+        "• held 1-on-1 tutoring sessions helping students with basic logic design concepts like boolean algebra, k-maps, state machines, etc. as well as their implementations in verilog",
+      description2:
+        "• created test benches to simulate and grade student verilog code within xilinx vivado",
     },
   ],
 };

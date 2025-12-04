@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 const PageTransition = ({ children }) => {
   const pathname = usePathname();
   return (
-    <AnimatePresence>
-      <div key={pathname}>
+    <AnimatePresence mode="wait">
+      <motion.div key={pathname}>
         <motion.div
           initial={{ opacity: 1 }}
           animate={{
@@ -21,7 +21,7 @@ const PageTransition = ({ children }) => {
           className="h-screen w-screen fixed bg-primary top-0 pointer-events-none"
         />
         {children}
-      </div>
+      </motion.div>
     </AnimatePresence>
   );
 };

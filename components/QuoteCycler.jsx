@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 const QuoteCycler = () => {
   // TODO: Replace with your actual quotes
   const quotes = [
-    "if there is one secret of scuccess it lies in the ability to get the other person's point of view and see things from that person's angle as well as from your own",
-    "The best way to predict the future is to create it",
-    "The expert in anything was once a beginner",
+    "if there is one secret of scuccess it lies in the ability to get the other person's point of view and see things from that person's angle as well as from your own.",
+    "The best way to predict the future is to create it.",
+    "The expert in anything was once a beginner.",
     "If debugging is the process of removing software bugs , then programming must be the process of putting them in.",
   ];
 
