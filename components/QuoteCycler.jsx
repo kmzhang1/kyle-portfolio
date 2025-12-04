@@ -32,7 +32,7 @@ const QuoteCycler = () => {
   return (
     <div className="flex items-center w-128 max-w-128 flex-shrink-0">
       <div
-        className={`text-sm font-light lowercase transition-opacity duration-700 ease-in-out text-left whitespace-normal break-words ${
+        className={`text-sm font-medium lowercase transition-opacity duration-700 ease-in-out text-left whitespace-normal break-words ${
           isVisible ? "opacity-60" : "opacity-0"
         }`}
         style={{ color: "var(--color-accent)" }}

@@ -11,7 +11,27 @@ yarn dev
 # or
 pnpm dev
 # or
-bun dev
+bun run bun:dev
+```
+
+### Using Bun Runtime
+
+This project is configured to work with [Bun](https://bun.sh/), a fast all-in-one JavaScript runtime & toolkit.
+
+**Installation:**
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+**Available Bun Scripts:**
+- `bun run bun:dev` - Start development server with Bun runtime
+- `bun run bun:build` - Build production bundle with Bun runtime
+- `bun run bun:start` - Start production server with Bun runtime
+- `bun run bun:lint` - Run linter with Bun runtime
+
+**Install Dependencies:**
+```bash
+bun install
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

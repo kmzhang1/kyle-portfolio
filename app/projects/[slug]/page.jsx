@@ -62,12 +62,14 @@ export default function ProjectDetail({ params }) {
           <div className="flex flex-wrap gap-3 mb-6">
             {project.liveUrl && (
               <a
-                href={project.liveUrl}
+                href={typeof project.liveUrl === 'string' ? project.liveUrl : project.liveUrl.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm bg-accent hover:bg-accent-hover text-white rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-accent/50"
               >
-                <span className="font-medium">try yourself</span>
+                <span className="font-medium">
+                  {typeof project.liveUrl === 'string' ? 'try yourself' : project.liveUrl.text}
+                </span>
                 <BsArrowUpRight />
               </a>
             )}
@@ -91,7 +93,7 @@ export default function ProjectDetail({ params }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="mb-8 rounded-lg overflow-hidden border border-white/10 shadow-lg max-w-xl"
+            className="mb-8 rounded-lg overflow-hidden border border-white/10 shadow-lg max-w-md"
           >
             {project.video ? (
               <video

@@ -1,7 +1,7 @@
 [project]
 name = "scripts"
 version = "0.1.0"
-description = "Portfolio RAG ingestion with ByteDance Dolphin document parsing"
+description = "Portfolio RAG ingestion with ByteDance Dolphin document parsing and LightRAG"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -26,4 +26,9 @@ dependencies = [
     "pillow>=9.3.0",
     "timm>=0.5.4",
     "omegaconf>=2.3.0",
+    # LightRAG dependencies
+    "lightrag-hku>=0.0.0",
+    "google-genai>=1.0.0,<2.0.0",
+    "aiofiles>=23.0.0",
+    "networkx>=3.0.0",
 ]

@@ -1,3 +1,5 @@
+"use client";
+
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { Button } from "./ui/button";
@@ -59,7 +61,7 @@ const Footer = () => {
       {/* Center content */}
       <div className="container mx-auto py-8 flex justify-center items-center">
         <div className="text-center space-y-2">
-          <p className="text-black/60 dark:text-white/60 text-lg font-medium tracking-widest">
+          <p className="text-black/60 dark:text-white/60 text-lg font-medium tracking-widest relative inline-block overflow-hidden shine-text">
             learn collaborate create
           </p>
           <p className="text-black/50 dark:text-white/50 text-sm">
@@ -67,6 +69,34 @@ const Footer = () => {
           </p>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes shine {
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 200%;
+          }
+        }
+
+        .shine-text::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          );
+          animation: shine 3s infinite;
+          pointer-events: none;
+        }
+      `}</style>
     </footer>
   );
 };

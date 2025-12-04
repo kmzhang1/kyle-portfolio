@@ -628,6 +628,7 @@ def run_ingestion(
     github_repos: List[str] = None,
     github_user: str = None,
     github_token: str = None,
+    enable_github: bool = False,
 ):
     """
     Main ingestion function.
@@ -639,6 +640,7 @@ def run_ingestion(
         github_repos: List of GitHub repositories to ingest (format: "owner/repo")
         github_user: GitHub username to fetch all public repos from
         github_token: Optional GitHub token for API authentication
+        enable_github: Enable GitHub repository extraction (default: False)
     """
     logging.info(f"Starting portfolio RAG ingestion")
     logging.info(f"Source directory: {source_dir}")
@@ -665,46 +667,50 @@ def run_ingestion(
     # Process local documents
     all_text_chunks = process_documents(source_dir, text_splitter)
 
-    # Fetch all repos for a GitHub user if specified
-    if github_user:
-        logging.info(f"\n--- Fetching All Repositories for User: {github_user} ---")
-        user_repos = get_user_repos(github_user, github_token)
-        if user_repos:
-            if github_repos:
-                # Combine user repos with explicitly specified repos
-                github_repos.extend(user_repos)
-            else:
-                github_repos = user_repos
+    # Process GitHub repositories (only if enabled)
+    if enable_github:
+        # Fetch all repos for a GitHub user if specified
+        if github_user:
+            logging.info(f"\n--- Fetching All Repositories for User: {github_user} ---")
+            user_repos = get_user_repos(github_user, github_token)
+            if user_repos:
+                if github_repos:
+                    # Combine user repos with explicitly specified repos
+                    github_repos.extend(user_repos)
+                else:
+                    github_repos = user_repos
 
-    # Process GitHub repositories
-    if github_repos:
-        logging.info("\n--- Processing GitHub Repositories ---")
-        for repo_name in github_repos:
-            logging.info(f"\nFetching repository: {repo_name}")
-            github_docs = process_github_repo(
-                repo_name=repo_name,
-                github_token=github_token
-            )
+        # Process GitHub repositories
+        if github_repos:
+            logging.info("\n--- Processing GitHub Repositories ---")
+            for repo_name in github_repos:
+                logging.info(f"\nFetching repository: {repo_name}")
+                github_docs = process_github_repo(
+                    repo_name=repo_name,
+                    github_token=github_token
+                )
 
-            if github_docs:
-                # Split GitHub documents into chunks
-                split_docs = text_splitter.split_documents(github_docs)
-                for doc in split_docs:
-                    doc.metadata["chunk_id"] = str(uuid.uuid4())
-                    enriched_text, extracted_data = add_semantic_tags(
-                        doc.page_content
-                    )
-                    if extracted_data:
-                        doc.metadata["extracted_data"] = extracted_data
+                if github_docs:
+                    # Split GitHub documents into chunks
+                    split_docs = text_splitter.split_documents(github_docs)
+                    for doc in split_docs:
+                        doc.metadata["chunk_id"] = str(uuid.uuid4())
+                        enriched_text, extracted_data = add_semantic_tags(
+                            doc.page_content
+                        )
+                        if extracted_data:
+                            doc.metadata["extracted_data"] = extracted_data
 
-                    all_text_chunks.append(
-                        {
-                            "id": len(all_text_chunks),
-                            "text": enriched_text,
-                            "metadata": doc.metadata,
-                        }
-                    )
-                logging.info(f"Added {len(split_docs)} chunks from {repo_name}")
+                        all_text_chunks.append(
+                            {
+                                "id": len(all_text_chunks),
+                                "text": enriched_text,
+                                "metadata": doc.metadata,
+                            }
+                        )
+                    logging.info(f"Added {len(split_docs)} chunks from {repo_name}")
+    else:
+        logging.info("\n--- GitHub ingestion disabled (use --enable-github to enable) ---")
 
     if not all_text_chunks:
         logging.warning("\n--- No data was processed. No index will be created. ---")
@@ -765,14 +771,18 @@ def main():
         help="Name of the sentence transformer model to use for embeddings.",
     )
     parser.add_argument(
+        "--enable-github",
+        action="store_true",
+        help="Enable GitHub repository extraction (disabled by default)",
+    )
+    parser.add_argument(
         "--github_repos",
         nargs="+",
         help='GitHub repositories to ingest (format: "owner/repo"). Example: --github_repos "octocat/Hello-World" "torvalds/linux"',
     )
     parser.add_argument(
         "--github_user",
-        default="kmzhang1",
-        help="GitHub username to fetch all public repositories from (default: kmzhang1)",
+        help="GitHub username to fetch all public repositories from",
     )
     parser.add_argument(
         "--github_token",
@@ -791,6 +801,7 @@ def main():
         github_repos=args.github_repos,
         github_user=args.github_user,
         github_token=github_token,
+        enable_github=args.enable_github,
     )
 
     print(f"\n{result}")

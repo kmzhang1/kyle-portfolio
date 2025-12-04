@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "upload-videos": "node scripts/upload-videos.js",
+    "bun:dev": "bun next dev",
+    "bun:build": "bun next build",
+    "bun:start": "bun next start",
+    "bun:lint": "bun next lint"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
@@ -21,6 +26,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/typography": "^0.5.19",
     "@types/mdx": "^2.0.13",
+    "@vercel/blob": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "devicons-react": "^1.5.0",

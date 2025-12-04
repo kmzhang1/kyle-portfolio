@@ -15,22 +15,31 @@ import {
 // Category icon mapping with react-icons and pastel colors
 const getCategoryIcon = (category) => {
   const iconConfig = {
-    "DATA VISUALIZATION": { icon: FaChartBar, color: "#93c5fd" }, // pastel blue
-    "DEEP LEARNING": { icon: FaBrain, color: "#c4b5fd" }, // pastel purple
-    "WEB DESIGN": { icon: FaPalette, color: "#f9a8d4" }, // pastel pink
-    FULLSTACK: { icon: FaLayerGroup, color: "#6ee7b7" }, // pastel green
-    "FULLSTACK/DL": { icon: FaRobot, color: "#fcd34d" }, // pastel amber
+    "data visualization": { icon: FaChartBar, color: "#93c5fd" }, // pastel blue
+    "deep learning": { icon: FaBrain, color: "#c4b5fd" }, // pastel purple
+    "web design": { icon: FaPalette, color: "#f9a8d4" }, // pastel pink
+    "fullstack": { icon: FaLayerGroup, color: "#6ee7b7" }, // pastel green
+    "fullstack/dl": { icon: FaRobot, color: "#fcd34d" }, // pastel amber
   };
   return iconConfig[category] || { icon: FaLayerGroup, color: "#9ca3af" };
 };
 
 const ProjectCard = ({ project, index }) => {
+  const { icon: Icon, color } = getCategoryIcon(project.category);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.1 }}
     >
+      {/* Title - Above Card */}
+      <div className="flex items-center justify-center mb-2">
+        <h3 className="text-base font-bold text-black dark:text-white">
+          {project.title}
+        </h3>
+      </div>
+
       <Link href={`/projects/${project.slug}`}>
         <div className="group relative overflow-hidden rounded-lg border border-black/10 dark:border-white/10 bg-white dark:bg-transparent hover:border-accent/50 transition-all duration-300 h-[200px]">
           {/* Project Image */}
@@ -45,21 +54,11 @@ const ProjectCard = ({ project, index }) => {
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
 
-            {/* Title - Top Left */}
-            <div className="absolute top-3 left-3 z-10">
-              <h3 className="text-base font-bold text-white drop-shadow-lg">
-                {project.title}
-              </h3>
-            </div>
-
-            {/* Category Icon - Top Right */}
-            <div className="absolute top-3 right-3 z-10">
-              {(() => {
-                const { icon: Icon, color } = getCategoryIcon(project.category);
-                return (
-                  <Icon className="w-6 h-6 drop-shadow-lg" style={{ color }} />
-                );
-              })()}
+            {/* Category Icon - Bottom Right with enhanced visibility */}
+            <div className="absolute bottom-3 right-3 z-10">
+              <div className="bg-gray-200/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-2 shadow-lg">
+                <Icon className="w-6 h-6" style={{ color }} />
+              </div>
             </div>
 
             {/* Hover Overlay with Description */}

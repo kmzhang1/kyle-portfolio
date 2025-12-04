@@ -104,12 +104,13 @@ Example format:
 }
 
 CRITICAL TOOL USAGE RULES:
-- When asked for EMAIL, GITHUB, LINKEDIN, CV/RESUME: You MUST call the corresponding tool
+- When asked for EMAIL, GITHUB, LINKEDIN, CV/RESUME: You MUST call the corresponding tool AND provide a friendly text response
 - NEVER respond with plain text like "github", "linkedin", or URLs for these
 - ALWAYS use function calling to provide clickable buttons/links
-- Example: If asked "what's your linkedin?", call get_social_link(platform="linkedin")
+- Example: If asked "what's your linkedin?", call get_social_link(platform="linkedin") AND respond with JSON like: {"text": "sure! here's my linkedin profile:", "highlights": ["linkedin"]}
 - When answering questions about EXPERIENCE, EDUCATION, or SKILLS: ALWAYS call answer_with_resume_link() with the appropriate tab, AND provide a detailed answer from the context
 - You MUST use the provided context to answer questions - this is critical!
+- IMPORTANT: ALWAYS provide a text response in JSON format even when using tools. Never return an empty or missing text field.
 
 STRICT GUARDRAILS - YOU MUST FOLLOW THESE RULES:
 
@@ -156,16 +157,16 @@ STRICT GUARDRAILS - YOU MUST FOLLOW THESE RULES:
    }]
 
    Q: "What's Kyle's email?"
-   A: [MUST call get_contact_email tool - DO NOT just write the email as text]
+   A: [MUST call get_contact_email tool AND provide JSON response: {"text": "sure! here's kyle's email:", "highlights": ["email"]}]
 
    Q: "What's your LinkedIn?"
-   A: [MUST call get_social_link tool with platform="linkedin" - DO NOT write "linkedin" or the URL as text]
+   A: [MUST call get_social_link tool with platform="linkedin" AND provide JSON response: {"text": "here's kyle's linkedin profile:", "highlights": ["linkedin"]}]
 
    Q: "Show me your GitHub"
-   A: [MUST call get_social_link tool with platform="github" - DO NOT write "github" as text]
+   A: [MUST call get_social_link tool with platform="github" AND provide JSON response: {"text": "check out kyle's github:", "highlights": ["github"]}]
 
    Q: "Can I see your resume?"
-   A: [MUST call get_social_link tool with platform="cv" - DO NOT write text about the resume]
+   A: [MUST call get_social_link tool with platform="cv" AND provide JSON response: {"text": "absolutely! here's kyle's resume:", "highlights": ["resume"]}]
 
    Q: "Tell me about Kyle's experience" or "Where has Kyle worked?"
    A: [MUST call answer_with_resume_link(tab="experience") AND provide JSON response like:
@@ -428,6 +429,31 @@ INSTRUCTIONS:
       } catch (e) {
         // If JSON parsing fails, use the raw text
         responseText = finalText;
+      }
+
+      // If response is empty or too short when tool is used, provide a default friendly message
+      if (!responseText || responseText.trim().length < 3) {
+        const toolCall = functionCalls[0];
+        if (toolCall.name === "get_contact_email") {
+          responseText = "sure! here's kyle's email:";
+          highlights = ["email"];
+        } else if (toolCall.name === "get_social_link") {
+          const platform = toolCall.args.platform;
+          if (platform === "linkedin") {
+            responseText = "here's kyle's linkedin profile:";
+            highlights = ["linkedin"];
+          } else if (platform === "github") {
+            responseText = "check out kyle's github:";
+            highlights = ["github"];
+          } else if (platform === "cv") {
+            responseText = "here's kyle's resume:";
+            highlights = ["resume"];
+          }
+        } else if (toolCall.name === "navigate_to_page") {
+          responseText = `navigating to the ${toolCall.args.page} page...`;
+        } else if (toolCall.name === "answer_with_resume_link") {
+          responseText = `check out the ${toolCall.args.tab} section for more details!`;
+        }
       }
 
       // Post-response validation for function call responses too

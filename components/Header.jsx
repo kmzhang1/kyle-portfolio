@@ -19,23 +19,18 @@ const Header = () => {
         backgroundColor: "var(--color-primary)",
       }}
     >
-      <div className="flex items-center justify-between w-full">
-        {/* Empty spacer for balance */}
-        <div className="w-[50px]"></div>
-
-        {/* Main content centered with quote cycler */}
-        <div className="flex items-center gap-8">
+      <div className="flex items-center justify-between w-full relative">
+        {/* Name on absolute left */}
+        <div className="flex items-center pl-4">
           {/* banner and logo */}
           <Link href="/" className="py-4">
             <h1 className="text-2xl font-light tracking-tight">kyle zhang</h1>
           </Link>
+        </div>
 
-          {/* desktop nav */}
-          <div className="hidden xl:flex">
-            <Nav />
-          </div>
-
-          {/* Quote cycler next to nav */}
+        {/* Nav and Quote cycler centered */}
+        <div className="hidden xl:flex items-center gap-16 absolute left-1/2 transform -translate-x-1/2">
+          <Nav />
           <QuoteCycler />
         </div>
 
