@@ -260,9 +260,7 @@ export default function AiAgent() {
             className="fixed bottom-8 right-28 z-50 bg-accent text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium whitespace-nowrap"
           >
             ask me questions about kyle!
-            <div
-              className="absolute top-1/2 -right-2 -translate-y-1/2 w-0 h-0 border-t-8 border-b-8 border-l-8 border-transparent border-l-accent"
-            />
+            <div className="absolute top-1/2 -right-2 -translate-y-1/2 w-0 h-0 border-t-8 border-b-8 border-l-8 border-transparent border-l-accent" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -303,7 +301,7 @@ export default function AiAgent() {
                     ask about kyle
                   </h3>
                   <p className="text-xs text-white/80 mt-1">
-                    powered by google gemini with document rag
+                    powered by gemini and lightrag
                   </p>
                 </div>
                 <button

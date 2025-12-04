@@ -133,8 +133,6 @@ dist
 .DS_Store
 
 # RAG and AI-related
-data/faiss_index/
-*.faiss
 hf_model/
 __pycache__/
 *.pyc

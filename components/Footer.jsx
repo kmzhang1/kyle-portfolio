@@ -61,7 +61,7 @@ const Footer = () => {
       {/* Center content */}
       <div className="container mx-auto py-8 flex justify-center items-center">
         <div className="text-center space-y-2">
-          <p className="text-black/60 dark:text-white/60 text-lg font-medium tracking-widest relative inline-block overflow-hidden shine-text">
+          <p className="text-lg font-medium tracking-widest relative inline-block shine-text">
             learn collaborate create
           </p>
           <p className="text-black/50 dark:text-white/50 text-sm">
@@ -73,28 +73,43 @@ const Footer = () => {
       <style jsx>{`
         @keyframes shine {
           0% {
-            left: -100%;
+            background-position: -200% center;
           }
           100% {
-            left: 200%;
+            background-position: 200% center;
           }
         }
 
-        .shine-text::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 50%;
-          height: 100%;
+        .shine-text {
           background: linear-gradient(
             90deg,
-            transparent,
-            rgba(255, 255, 255, 0.4),
-            transparent
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.6) 40%,
+            rgba(255, 255, 255, 0.9) 50%,
+            rgba(0, 0, 0, 0.6) 60%,
+            rgba(0, 0, 0, 0.6) 100%
           );
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
           animation: shine 3s infinite;
-          pointer-events: none;
+        }
+
+        :global(.dark) .shine-text {
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.6) 40%,
+            rgba(255, 255, 255, 1) 50%,
+            rgba(255, 255, 255, 0.6) 60%,
+            rgba(255, 255, 255, 0.6) 100%
+          );
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: shine 3s infinite;
         }
       `}</style>
     </footer>
