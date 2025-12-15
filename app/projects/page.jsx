@@ -35,13 +35,13 @@ const ProjectCard = ({ project, index }) => {
     >
       {/* Title - Above Card */}
       <div className="flex items-center justify-center mb-2">
-        <h3 className="text-base font-bold text-black dark:text-white">
+        <h3 className="text-sm sm:text-base font-bold text-black dark:text-white">
           {project.title}
         </h3>
       </div>
 
       <Link href={`/projects/${project.slug}`}>
-        <div className="group relative overflow-hidden rounded-lg border border-black/10 dark:border-white/10 bg-white dark:bg-transparent hover:border-accent/50 transition-all duration-300 h-[200px]">
+        <div className="group relative overflow-hidden rounded-lg border border-black/10 dark:border-white/10 bg-white dark:bg-transparent hover:border-accent/50 transition-all duration-300 h-[180px] sm:h-[200px]">
           {/* Project Image */}
           <div className="relative w-full h-full">
             <Image
@@ -55,21 +55,21 @@ const ProjectCard = ({ project, index }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
 
             {/* Category Icon - Bottom Right with enhanced visibility */}
-            <div className="absolute bottom-3 right-3 z-10">
-              <div className="bg-gray-200/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-2 shadow-lg">
-                <Icon className="w-6 h-6" style={{ color }} />
+            <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 z-10">
+              <div className="bg-gray-200/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-1.5 sm:p-2 shadow-lg">
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6" style={{ color }} />
               </div>
             </div>
 
             {/* Hover Overlay with Description */}
-            <div className="absolute inset-0 bg-black/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col justify-center p-4">
-              <p className="text-white text-xs leading-relaxed mb-3">
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col justify-center p-3 sm:p-4">
+              <p className="text-white text-xs leading-relaxed mb-2 sm:mb-3">
                 {project.shortDescription}
               </p>
 
               {/* Tech Stack */}
               {project.metadata && (
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5">
                   {(() => {
                     const allTechs = Object.values(project.metadata)
                       .flat()
@@ -78,7 +78,7 @@ const ProjectCard = ({ project, index }) => {
                     return allTechs.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="text-[10px] px-2 py-0.5 rounded bg-white/10 text-white border border-white/20"
+                        className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 rounded bg-white/10 text-white border border-white/20"
                       >
                         {tech}
                       </span>
@@ -88,10 +88,10 @@ const ProjectCard = ({ project, index }) => {
               )}
 
               {/* View Arrow */}
-              <div className="absolute bottom-3 right-3">
-                <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center">
+              <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-accent flex items-center justify-center">
                   <svg
-                    className="w-3 h-3 text-white"
+                    className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -127,16 +127,16 @@ const CategoryLegend = () => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4, delay: 0.2 }}
-      className="bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-lg p-3"
+      className="bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-lg p-3 sm:p-4"
     >
-      <h3 className="text-xs font-semibold text-black/70 dark:text-white/70 mb-2 tracking-wider">
+      <h3 className="text-xs sm:text-sm font-semibold text-black/70 dark:text-white/70 mb-2 sm:mb-3 tracking-wider">
         categories
       </h3>
-      <div className="space-y-1.5">
+      <div className="space-y-1.5 sm:space-y-2">
         {categories.map((cat, idx) => (
           <div key={idx} className="flex items-center gap-2">
-            <cat.Icon className="w-5 h-5" style={{ color: cat.color }} />
-            <span className="text-xs text-black/70 dark:text-white/70">
+            <cat.Icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: cat.color }} />
+            <span className="text-xs sm:text-sm text-black/70 dark:text-white/70">
               {cat.name}
             </span>
           </div>
@@ -154,16 +154,16 @@ const Projects = () => {
         opacity: 1,
         transition: { delay: 0.1, duration: 0.2, ease: "easeIn" },
       }}
-      className="min-h-[80vh] py-12 xl:py-16"
+      className="min-h-[80vh] py-8 sm:py-12 xl:py-16"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-3xl xl:text-4xl font-bold"
+            className="text-2xl sm:text-3xl xl:text-4xl font-bold"
           >
             <span className="bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent">
               projects
@@ -172,20 +172,20 @@ const Projects = () => {
         </div>
 
         {/* Content with Grid and Legend */}
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Projects Grid */}
-          <div className="flex-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {projectsData.map((project, index) => (
-                <ProjectCard key={project.id} project={project} index={index} />
-              ))}
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">
+          {/* Legend - Top on mobile, Right on desktop */}
+          <div className="lg:order-2 lg:w-64 flex-shrink-0">
+            <div className="lg:sticky lg:top-24">
+              <CategoryLegend />
             </div>
           </div>
 
-          {/* Legend - Right Side */}
-          <div className="lg:w-64 flex-shrink-0">
-            <div className="lg:sticky lg:top-24">
-              <CategoryLegend />
+          {/* Projects Grid */}
+          <div className="lg:order-1 flex-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+              {projectsData.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
+              ))}
             </div>
           </div>
         </div>

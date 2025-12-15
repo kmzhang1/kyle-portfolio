@@ -24,7 +24,7 @@ const Header = () => {
         <div className="flex items-center pl-4">
           {/* banner and logo */}
           <Link href="/" className="py-4">
-            <h1 className="text-2xl font-light tracking-tight">kyle zhang</h1>
+            <h1 className="text-xl sm:text-2xl font-light tracking-tight">kyle zhang</h1>
           </Link>
         </div>
 
@@ -34,7 +34,13 @@ const Header = () => {
           <QuoteCycler />
         </div>
 
-        {/* theme toggle at absolute right */}
+        {/* Mobile nav and theme toggle */}
+        <div className="flex xl:hidden items-center gap-3 pr-4">
+          <ThemeToggle />
+          <MobileNav />
+        </div>
+
+        {/* Desktop theme toggle at absolute right */}
         <div className="hidden xl:flex items-center gap-3 pr-4">
           <ThemeToggle />
         </div>

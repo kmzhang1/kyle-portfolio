@@ -58,7 +58,7 @@ const TimelineItem = ({ item, index, scrollContainer, isContainerReady }) => {
       initial={{ opacity: 1, scale: 1, x: 0 }}
       animate={{ opacity, scale, x: isVisible ? 0 : -10 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="relative pl-10"
+      className="relative pl-6 sm:pl-8 xl:pl-10"
     >
       {/* Timeline dot with scroll-based animation */}
       <motion.div
@@ -68,7 +68,7 @@ const TimelineItem = ({ item, index, scrollContainer, isContainerReady }) => {
         transition={{ duration: 0.3 }}
       >
         <motion.div
-          className="w-4 h-4 rounded-full border-2 transition-all duration-300"
+          className="w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 transition-all duration-300"
           animate={{
             boxShadow: glowOpacity > 0
               ? `0 0 0 4px rgba(157, 157, 242, ${glowOpacity})`
@@ -82,14 +82,14 @@ const TimelineItem = ({ item, index, scrollContainer, isContainerReady }) => {
       </motion.div>
 
       {/* Content */}
-      <div className="group pb-6">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+      <div className="group pb-4 sm:pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-2 mb-3 sm:mb-4">
           <div>
-            <h3 className="text-lg font-normal mb-1 transition-colors duration-300 group-hover:opacity-80">
+            <h3 className="text-base sm:text-lg font-normal mb-0.5 sm:mb-1 transition-colors duration-300 group-hover:opacity-80">
               {item.position}
             </h3>
             <p
-              className="text-sm font-light tracking-wide"
+              className="text-xs sm:text-sm font-light tracking-wide"
               style={{ color: "var(--color-accent)" }}
             >
               {item.company}
@@ -102,7 +102,7 @@ const TimelineItem = ({ item, index, scrollContainer, isContainerReady }) => {
           </span>
         </div>
 
-        <div className="space-y-3 opacity-70 text-sm leading-relaxed font-light">
+        <div className="space-y-2 sm:space-y-3 opacity-70 text-xs sm:text-sm leading-relaxed font-light">
           {item.description1 && (
             <p className="transition-opacity duration-300 group-hover:opacity-90">
               {item.description1}
@@ -168,16 +168,16 @@ const Timeline = ({ items, scrollContainerId }) => {
   }, [scrollContainerId]);
 
   return (
-    <div ref={containerRef} className="relative pl-2">
+    <div ref={containerRef} className="relative pl-1 sm:pl-2">
       {/* Vertical line - base line */}
       <div
-        className="absolute left-2 top-0 bottom-0 w-[2px]"
+        className="absolute left-1 sm:left-2 top-0 bottom-0 w-[1.5px] sm:w-[2px]"
         style={{ backgroundColor: "var(--color-border)" }}
       />
 
       {/* Animated progress line that follows scroll */}
       <motion.div
-        className="absolute left-2 top-0 w-[2px] origin-top"
+        className="absolute left-1 sm:left-2 top-0 w-[1.5px] sm:w-[2px] origin-top"
         style={{
           backgroundColor: "var(--color-accent)",
           height: `${scrollProgress * 100}%`,

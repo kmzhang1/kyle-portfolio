@@ -443,43 +443,43 @@ const ResumeContent = () => {
   }, {});
 
   return (
-    <div className="min-h-screen flex items-start justify-center xl:justify-start py-12 xl:py-24">
+    <div className="min-h-screen flex items-start justify-center xl:justify-start py-6 sm:py-12 xl:py-24">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
           transition: { delay: 0.1, duration: 0.2, ease: "easeIn" },
         }}
-        className="w-full max-w-6xl mx-auto px-6 xl:px-12 h-full"
+        className="w-full max-w-6xl mx-auto px-4 sm:px-6 xl:px-12 h-full"
       >
         <Tabs
           value={activeTab}
           onValueChange={setActiveTab}
-          className="flex flex-col xl:flex-row gap-12 xl:items-start"
+          className="flex flex-col xl:flex-row gap-6 sm:gap-8 xl:gap-12 xl:items-start"
         >
           <div className="xl:sticky xl:top-24 xl:min-w-[200px]">
-            <TabsList className="flex flex-col w-full gap-2 mx-auto xl:mx-0 bg-transparent">
+            <TabsList className="flex flex-row xl:flex-col w-full gap-1 sm:gap-2 mx-auto xl:mx-0 bg-transparent overflow-x-auto pb-2 xl:pb-0">
               <TabsTrigger
                 value="experience"
-                className="w-full justify-start text-sm font-light"
+                className="w-auto xl:w-full justify-start text-xs sm:text-sm font-light px-2 sm:px-3 whitespace-nowrap"
               >
                 experience
               </TabsTrigger>
               <TabsTrigger
                 value="education"
-                className="w-full justify-start text-sm font-light"
+                className="w-auto xl:w-full justify-start text-xs sm:text-sm font-light px-2 sm:px-3 whitespace-nowrap"
               >
                 education
               </TabsTrigger>
               <TabsTrigger
                 value="skills"
-                className="w-full justify-start text-sm font-light"
+                className="w-auto xl:w-full justify-start text-xs sm:text-sm font-light px-2 sm:px-3 whitespace-nowrap"
               >
                 skills
               </TabsTrigger>
               <TabsTrigger
                 value="about"
-                className="w-full justify-start text-sm font-light"
+                className="w-auto xl:w-full justify-start text-xs sm:text-sm font-light px-2 sm:px-3 whitespace-nowrap"
               >
                 about
               </TabsTrigger>
@@ -490,12 +490,12 @@ const ResumeContent = () => {
           <div className="w-full flex-1">
             {/* experience */}
             <TabsContent value="experience" className="w-full">
-              <div className="flex flex-col gap-8 text-left">
+              <div className="flex flex-col gap-4 sm:gap-6 xl:gap-8 text-left">
                 <div>
-                  <p className="text-sm opacity-60">{experience.description}</p>
+                  <p className="text-xs sm:text-sm opacity-60">{experience.description}</p>
                 </div>
-                <ScrollArea className="h-[600px]" id="experience-scroll">
-                  <div className="pb-4 pr-4 max-w-3xl">
+                <ScrollArea className="h-[400px] sm:h-[500px] xl:h-[600px]" id="experience-scroll">
+                  <div className="pb-4 pr-2 sm:pr-4 max-w-3xl">
                     <Timeline
                       items={experience.items}
                       scrollContainerId="experience-scroll"
@@ -506,27 +506,27 @@ const ResumeContent = () => {
             </TabsContent>
             {/* education */}
             <TabsContent value="education" className="w-full">
-              <div className="flex flex-col gap-8 text-left">
+              <div className="flex flex-col gap-4 sm:gap-6 xl:gap-8 text-left">
                 <div>
-                  <p className="text-sm opacity-60">{education.description}</p>
+                  <p className="text-xs sm:text-sm opacity-60">{education.description}</p>
                 </div>
-                <ScrollArea className="h-[600px]">
-                  <ul className="space-y-8 pb-4 pr-4">
+                <ScrollArea className="h-[400px] sm:h-[500px] xl:h-[600px]">
+                  <ul className="space-y-6 sm:space-y-8 pb-4 pr-2 sm:pr-4">
                     {education.items.map((item, index) => {
                       return (
                         <li
                           key={index}
-                          className="border-l-2 pl-6 py-2 transition-colors"
+                          className="border-l-2 pl-4 sm:pl-6 py-2 transition-colors"
                           style={{ borderColor: "var(--color-border)" }}
                         >
-                          <div className="flex flex-col gap-2">
-                            <h3 className="text-lg font-normal">
+                          <div className="flex flex-col gap-1.5 sm:gap-2">
+                            <h3 className="text-base sm:text-lg font-normal">
                               {item.institution}
                             </h3>
-                            <p className="text-sm opacity-70">
+                            <p className="text-xs sm:text-sm opacity-70">
                               {item.position}
                             </p>
-                            <p className="text-sm opacity-60">{item.gpa}</p>
+                            <p className="text-xs sm:text-sm opacity-60">{item.gpa}</p>
                             <span className="text-xs opacity-50">
                               {item.duration}
                             </span>
@@ -540,26 +540,26 @@ const ResumeContent = () => {
             </TabsContent>
             {/* skills */}
             <TabsContent value="skills" className="w-full">
-              <div className="flex flex-col gap-8 text-left">
+              <div className="flex flex-col gap-4 sm:gap-6 xl:gap-8 text-left">
                 <div>
-                  <p className="text-sm opacity-60">{skills.description}</p>
+                  <p className="text-xs sm:text-sm opacity-60">{skills.description}</p>
                 </div>
-                <ScrollArea className="h-[600px]">
-                  <div className="pb-4 pr-4 space-y-8">
+                <ScrollArea className="h-[400px] sm:h-[500px] xl:h-[600px]">
+                  <div className="pb-4 pr-2 sm:pr-4 space-y-6 sm:space-y-8">
                     {Object.entries(groupedSkills).map(([category, skills]) => (
                       <div key={category}>
-                        <h2 className="text-base font-normal mb-4 opacity-80">
+                        <h2 className="text-sm sm:text-base font-normal mb-3 sm:mb-4 opacity-80">
                           {category}
                         </h2>
-                        <ul className="flex flex-wrap gap-3">
+                        <ul className="flex flex-wrap gap-2 sm:gap-3">
                           {skills.map((skill, index) => {
                             return (
                               <li
                                 key={index}
-                                className="flex items-center gap-2 px-3 py-2 rounded-md border transition-colors text-sm opacity-80 hover:opacity-100"
+                                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md border transition-colors text-xs sm:text-sm opacity-80 hover:opacity-100"
                                 style={{ borderColor: "var(--color-border)" }}
                               >
-                                <div className="text-base opacity-70">
+                                <div className="text-sm sm:text-base opacity-70">
                                   {skill.icon}
                                 </div>
                                 <span className="text-xs">{skill.name}</span>
@@ -575,22 +575,22 @@ const ResumeContent = () => {
             </TabsContent>
             {/* about */}
             <TabsContent value="about" className="w-full text-left">
-              <div className="flex flex-col gap-8 min-h-[600px]">
+              <div className="flex flex-col gap-4 sm:gap-6 xl:gap-8 min-h-[400px] sm:min-h-[500px] xl:min-h-[600px]">
                 <div>
-                  <p className="text-sm opacity-60">{about.description}</p>
+                  <p className="text-xs sm:text-sm opacity-60">{about.description}</p>
                 </div>
-                <ul className="space-y-4 max-w-[600px]">
+                <ul className="space-y-3 sm:space-y-4 max-w-[600px]">
                   {about.info.map((item, index) => {
                     return (
                       <li
                         key={index}
-                        className="flex items-start gap-4 pb-4 border-b transition-colors"
+                        className="flex flex-col sm:flex-row items-start gap-2 sm:gap-4 pb-3 sm:pb-4 border-b transition-colors"
                         style={{ borderColor: "var(--color-border)" }}
                       >
-                        <span className="text-xs opacity-50 min-w-[100px] pt-1">
+                        <span className="text-xs opacity-50 sm:min-w-[100px] sm:pt-1">
                           {item.fieldName}
                         </span>
-                        <span className="text-sm">{item.fieldValue}</span>
+                        <span className="text-xs sm:text-sm">{item.fieldValue}</span>
                       </li>
                     );
                   })}

@@ -7,66 +7,73 @@ import { Button } from "./ui/button";
 const Footer = () => {
   return (
     <footer
-      className="w-full border-t transition-colors duration-300 relative"
+      className="w-full border-t transition-colors duration-300"
       style={{ borderColor: "var(--color-border)" }}
     >
-      {/* Social links on the absolute left of screen */}
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-3 z-10">
-        <a href="/Kyle_Resume.pdf" target="_blank" rel="noopener noreferrer">
-          <Button
-            variant="outline"
-            size="sm"
-            className="flex items-center gap-2 text-sm font-light"
-          >
-            <span className="hidden lg:inline">resume/cv</span>
-            <FiDownload className="text-base" />
-          </Button>
-        </a>
-        <a
-          href="https://github.com/kmzhang1"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
-          style={{ color: "var(--color-text)" }}
-        >
-          <FaGithub className="text-lg" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/kyle-zhang-3a6551194/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
-          style={{ color: "var(--color-text)" }}
-        >
-          <FaLinkedinIn className="text-lg" />
-        </a>
-        <a
-          href="https://www.instagram.com/kaiyohhh/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
-          style={{ color: "var(--color-text)" }}
-        >
-          <FaInstagram className="text-lg" />
-        </a>
-        <a
-          href="mailto:kylemzhang@gmail.com"
-          className="text-sm font-light opacity-60 hover:opacity-100 transition-opacity duration-300"
-          style={{ color: "var(--color-text)" }}
-        >
-          kylemzhang@gmail.com
-        </a>
-      </div>
+      <div className="container mx-auto px-4 py-6 sm:py-8">
+        {/* Mobile layout: stacked */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-0">
+          {/* Social links - left on desktop, top on mobile */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3">
+            <a href="/Kyle_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-2 text-xs sm:text-sm font-light"
+              >
+                <span className="hidden sm:inline">resume/cv</span>
+                <span className="sm:hidden">cv</span>
+                <FiDownload className="text-base" />
+              </Button>
+            </a>
+            <a
+              href="https://github.com/kmzhang1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
+              style={{ color: "var(--color-text)" }}
+            >
+              <FaGithub className="text-lg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kyle-zhang-3a6551194/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
+              style={{ color: "var(--color-text)" }}
+            >
+              <FaLinkedinIn className="text-lg" />
+            </a>
+            <a
+              href="https://www.instagram.com/kaiyohhh/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
+              style={{ color: "var(--color-text)" }}
+            >
+              <FaInstagram className="text-lg" />
+            </a>
+            <a
+              href="mailto:kylemzhang@gmail.com"
+              className="text-xs sm:text-sm font-light opacity-60 hover:opacity-100 transition-opacity duration-300"
+              style={{ color: "var(--color-text)" }}
+            >
+              kylemzhang@gmail.com
+            </a>
+          </div>
 
-      {/* Center content */}
-      <div className="container mx-auto py-8 flex justify-center items-center">
-        <div className="text-center space-y-2">
-          <p className="text-lg font-medium tracking-widest relative inline-block shine-text">
-            learn collaborate create
-          </p>
-          <p className="text-black/50 dark:text-white/50 text-sm">
-            © 2025 Kyle Zhang. All Rights Reserved.
-          </p>
+          {/* Center content */}
+          <div className="text-center space-y-1 sm:space-y-2">
+            <p className="text-base sm:text-lg font-medium tracking-widest relative inline-block shine-text">
+              learn collaborate create
+            </p>
+            <p className="text-black/50 dark:text-white/50 text-xs sm:text-sm">
+              © 2025 Kyle Zhang. All Rights Reserved.
+            </p>
+          </div>
+
+          {/* Spacer for desktop layout balance */}
+          <div className="hidden lg:block w-[200px]"></div>
         </div>
       </div>
 

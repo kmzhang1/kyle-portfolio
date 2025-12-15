@@ -56,12 +56,22 @@ const TabsTrigger = React.forwardRef(({ className, ...props }, ref) => {
       {...props}
     >
       {isActive && (
-        <motion.div
-          layoutId="activeTab"
-          className="absolute left-0 top-0 bottom-0 w-[2px]"
-          style={{ backgroundColor: 'var(--color-accent)' }}
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-        />
+        <>
+          {/* Mobile: horizontal bottom border */}
+          <motion.div
+            layoutId="activeTabMobile"
+            className="absolute left-0 right-0 bottom-0 h-[2px] xl:hidden"
+            style={{ backgroundColor: 'var(--color-accent)' }}
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          />
+          {/* Desktop: vertical left border */}
+          <motion.div
+            layoutId="activeTabDesktop"
+            className="hidden xl:block absolute left-0 top-0 bottom-0 w-[2px]"
+            style={{ backgroundColor: 'var(--color-accent)' }}
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          />
+        </>
       )}
       {props.children}
     </TabsPrimitive.Trigger>
